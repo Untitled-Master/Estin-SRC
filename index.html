@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estin SRC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .navbar, footer {
+            background-color: #1e1e1e;
+        }
+
+        .navbar-brand {
+            color: #bb86fc;
+        }
+
+        .nav-link {
+            color: #e0e0e0;
+        }
+
+        .nav-link:hover {
+            color: #bb86fc;
+        }
+
+        .hero-section {
+            background-color: #1f1b24;
+            color: #bb86fc;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+        }
+
+        .btn-purple {
+            background-color: #bb86fc;
+            color: #1e1e1e;
+        }
+
+        .btn-purple:hover {
+            background-color: #9f6ffb;
+            color: #ffffff;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            color: #e0e0e0;
+        }
+
+        .card img {
+            border-radius: 0.5rem;
+        }
+
+        .card-title {
+            color: #bb86fc;
+        }
+
+        .card-text {
+            color: #b0b0b0;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        footer {
+            background-color: #12121200;
+            padding: 20px 0;
+        }
+
+        /* Special YouTube Card */
+        .youtube-card {
+            background-color: #9f6ffb;
+            color: #ffffff;
+        }
+
+        .youtube-card .card-title {
+            color: #ffffff;
+        }
+
+        .youtube-card .btn-purple {
+            background-color: #ffffff;
+            color: #bb86fc;
+        }
+
+        /* Special Discord Card */
+        .discord-card {
+            background-color: #5865F2;
+            color: #ffffff;
+        }
+
+        .discord-card .card-title {
+            color: #ffffff;
+        }
+
+        .discord-card .btn-purple {
+            background-color: #ffffff;
+            color: #7289da;
+        }
+        a{
+            text-decoration: none;
+            color: #9f6ffb;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Estin SRC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#websites">Websites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#youtube-channels">YouTube Channels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#communities">Communities</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <!-- Logo -->
+            <img src="logo.png" alt="Estin SRC Logo" class="mb-4" style="max-width: 150px;">
+            <h1>Welcome to Estin SRC</h1>
+            <p>Your ultimate resource center for CS students at Estin.</p>
+            <a href="#websites" class="btn btn-purple btn-lg mt-4">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Websites Section -->
+    <section id="websites">
+        <div class="container">
+            <h2 class="text-center">Websites</h2>
+            <p class="text-center">Explore a list of websites that offer valuable resources for CS students at Estin.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="imgs/estinBib.PNG" class="card-img-top" alt="Website Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-globe"></i> Estin bib</h5>
+                            <p class="card-text">Estin Library is a platform that compiles all ESTIN courses, including TDs, EMDs, and corrections. It provides easy access to these resources, allowing you to quickly find what you need with just a click.</p>
+                            <a href="https://the-estin-bib.vercel.app/" class="btn btn-purple">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="imgs/estinRepo.PNG" class="card-img-top" alt="Website Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-globe"></i> ESTIN REPOSITORY</h5>
+                            <p class="card-text">ESTIN REPOSITORY is a collection of Subjects, Exams & Courses of ESTIN. The website was created for the purpose of helping all computer science students.</p><br>
+                            <a href="https://rep.estin.dz/" class="btn btn-purple">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="imgs/tresorEsi.PNG" class="card-img-top" alt="Website Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-globe"></i> TRESOR ESI</h5>
+                            <p class="card-text">TRESOR ESI is a comprehensive platform that compiles a wide range of Subjects, Exams, and Courses from ESI, making it easy to access and explore all the academic resources you need in one convenient location.</p>
+                            <a href="https://tresor.cse.club/" class="btn btn-purple">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more website cards as needed -->
+            </div>
+        </div>
+    </section>
+
+ <!-- YouTube Channels Section -->
+<section id="youtube-channels" class="bg-dark">
+    <div class="container">
+        <h2 class="text-center">YouTube Channels</h2>
+        <p class="text-center">Find YouTube channels that provide lectures, tutorials, and more for CS students.</p>
+        
+        <!-- Math (Analysis/Algebra) Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3 class="text-center text-info">Math (Analysis/Algebra)</h3>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/miski.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Mohssine El Miski</h5>
+                        <a href="https://www.youtube.com/@mohssineelmiski3785" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/exom.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Exo Maroc</h5>
+                        <a href="https://www.youtube.com/@exomaroc" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/exo7.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Exo7Math</h5>
+                        <a href="https://www.youtube.com/@Exo7Math" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/asma.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Asma Kefkef</h5>
+                        <a href="https://www.youtube.com/@asmakefkef" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Electricity Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3 class="text-center text-info">Electricity</h3>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/miski.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Mohssine El Miski</h5>
+                        <a href="https://www.youtube.com/@mohssineelmiski3785" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/exom.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Exo Maroc</h5>
+                        <a href="https://www.youtube.com/@exomaroc" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/sami.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> الأستاذ سامي براسي</h5>
+                        <a href="https://www.youtube.com/@user-xt1br6zi2q/featured" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Algo Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3 class="text-center text-info">Algo</h3>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/hassen.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Hassen El Bahi</h5>
+                        <a href="https://www.youtube.com/@hassanbahi" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/zair.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Algorithmics By Zair</h5>
+                        <a href="https://www.youtube.com/@algorithmicsbyzair" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/neso.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Neso Academy <span class="badge bg-secondary">English</span></h5>
+                        <a href="https://www.youtube.com/@nesoacademy" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archi Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3 class="text-center text-info">Archi</h3>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/mahs.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Cours Informatique Mahseur</h5>
+                        <a href="https://www.youtube.com/@Mahseur" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 youtube-card">
+                    <img src="imgs/neso.PNG" class="card-img-top" alt="YouTube Channel Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fab fa-youtube"></i> Neso Academy <span class="badge bg-secondary">English</span></h5>
+                        <a href="https://www.youtube.com/@nesoacademy" class="btn btn-purple">Visit Channel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Communities Section -->
+    <section id="communities">
+        <div class="container">
+            <h2 class="text-center">Communities</h2>
+            <p class="text-center">Join communities where CS students at Estin can share knowledge and collaborate.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 discord-card">
+                        <img src="imgs/prepaDiscord.png" class="card-img-top"
+                            alt="Discord Community Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fab fa-discord"></i> Prepa hub 🎓</h5>
+                            <p class="card-text">Our server is designed to connect students from various schools and study levels. Whether you’re looking for academic help, project collaboration, or just a place to chill and chat, we’ve got you covered!</p>
+                            <a href="https://discord.gg/yB8rSNetQJ" class="btn btn-purple">Join Community</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 discord-card">
+                        <img src="imgs/DevAlgeria.PNG" class="card-img-top"
+                            alt="Discord Community Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fab fa-discord"></i> DevAlgeria</h5>
+                            <p class="card-text">You've joined a global community of developers dedicated to supporting creators of all levels and backgrounds. Everyone is welcome, from beginners to professionals.</p><br>
+                            <a href="https://discord.gg/mRwpAXMtnD" class="btn btn-purple">Join Community</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more Discord community cards as needed -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center">
+        <p>Made with ❤️ by <a href="https://github.com/Untitled-Master">Ahmed Bl</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
