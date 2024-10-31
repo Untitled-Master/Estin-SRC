@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Forum</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212; /* Dark background */
+            color: #BB86FC; /* Light text color */
+        }
+        .container {
+            background-color: #212529; /* Darker container */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+        }
+        h1 {
+            color: #9F6FFB; /* Heading color */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-label {
+            color: #BB86FC; /* Form label color */
+        }
+        .btn-submit {
+            background-color: #9F6FFB; /* Button color */
+            color: #FFFFFF;
+            border: none;
+        }
+        .btn-submit:hover {
+            background-color: #BB86FC; /* Button hover color */
+        }
+        .form-control {
+            background-color: #1F1B24; /* Input background */
+            color: #FFFFFF; /* Input text color */
+            border: 1px solid #BB86FC; /* Input border color */
+        }
+        .form-control:focus {
+            background-color: #1F1B24;
+            border-color: #9F6FFB; /* Focus border color */
+            box-shadow: none; /* Remove shadow */
+        }
+        .widget {
+            border-radius: 10px;
+            background: rgba(159, 111, 251, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .widget-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: #9F6FFB; /* Widget icon color */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><i class="fas fa-book"></i> Book Forum</h1>
+    <form id="bookForm">
+        <div class="form-group widget">
+            <i class="fas fa-book-open widget-icon"></i>
+            <label for="bookName" class="form-label">Book Name</label>
+            <input type="text" class="form-control" id="bookName" required>
+        </div>
+        <div class="form-group widget">
+            <i class="fas fa-link widget-icon"></i>
+            <label for="bookUrl" class="form-label">Book URL</label>
+            <input type="url" class="form-control" id="bookUrl" required>
+        </div>
+        <div class="form-group widget">
+            <i class="fas fa-calendar-alt widget-icon"></i>
+            <label for="year" class="form-label">Year</label>
+            <select class="form-control" id="year" required>
+                <option value="1cp">1CP</option>
+                <option value="2cp">2CP</option>
+                <option value="1cs">1CS</option>
+                <option value="2cs">2CS</option>
+                <option value="3cs">3CS</option>
+            </select>
+        </div>
+        <div class="form-group widget">
+            <i class="fas fa-cogs widget-icon"></i>
+            <label for="module" class="form-label">Module</label>
+            <select class="form-control" id="module" required>
+                <option value="Analysis">Analysis</option>
+                <option value="Algebra">Algebra</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Algo">Algo</option>
+                <option value="Archi">Archi</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-submit btn-block">Submit</button>
+    </form>
+</div>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+  // Your web app's Firebase configuration
+// Your web app's Firebase configuration from .env
+    const firebaseConfig = {
+        apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+        authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+        databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+        projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_FIREBASE_APP_ID
+    };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  // Handle form submission
+  const form = document.getElementById('bookForm');
+  form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get form values
+      const bookName = document.getElementById('bookName').value;
+      const bookUrl = document.getElementById('bookUrl').value;
+      const year = document.getElementById('year').value;
+      const module = document.getElementById('module').value;
+
+      // Create a new book entry in the database
+      const newBookRef = ref(database, 'books/' + Date.now());
+      set(newBookRef, {
+          bookName: bookName,
+          bookUrl: bookUrl,
+          year: year,
+          module: module
+      })
+      .then(() => {
+          alert('Book added successfully!'); // Alert on success
+          form.reset(); // Reset the form
+      })
+      .catch((error) => {
+          console.error('Error adding book: ', error); // Log errors
+      });
+  });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
