@@ -19,7 +19,7 @@ As an ESTIN computer science student, you have access to all the essential resou
 
 In summary, as an ESTIN computer science student, you are equipped with a comprehensive suite of resources that cater to your academic and professional development. We are dedicated to supporting your growth and ensuring you have everything you need to thrive in the dynamic field of computer science.
 # Screenshots
- <img src="https://estin-src.vercel.app/Capture.PNG"> <img src="https://estin-src.vercel.app/Capture2.PNG">
+ <img src="https://estin-src.vercel.app/imgs/Capture.PNG"> <img src="https://estin-src.vercel.app/imgs/Capture2.PNG">
 # Tech Used
  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
       
