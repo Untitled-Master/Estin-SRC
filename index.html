@@ -1,149 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estin SRC</title>
+    <title>Estin SRC - Student Resource Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="google-site-verification" content="RnU6l2ywBgXn8cQGUx0A5MWPXideZCcld9fR6YRGP7w" />
-    <meta name="description" content="Your ultimate resource center for CS students at Estin.">
-    <meta name="keywords" content="Estin,ESTIN,estin,rep,rep estin,estin,rep,repository,estin repository,ESTIN REPOSITORY,REP,REP ESTIN,rep.estin.dz,dz,estin, esi, estin bib, estin tresor, esi tresor, estin repo, esi repo, Estin Library, ESTIN, Graduate School, Computer Science, Digital Science, Technology, virtual library, courses, TD, EMD, corrections, 1CP, 2CP, 1CS, 2CS, 3CS, Semestre 01, Semestre 02, Algebra, Algorithms, Data Structures, Mathematical Analysis, Computer Architecture, Office Tools, Web, Electronics, English, Intro Systems, Business Economics, Probability and Statistics, Object-Oriented Programming, Software Engineering, Artificial Intelligence, Networks, Security, SI, Logic, Optimization, Programming, Database, Concours, Competitive Exams, Bureautique, Mechanique.">
-    <meta name="author" content="Ahmed Belmehnouf">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
             color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
         }
-
-        .navbar, footer {
+        .card-text{
+            color: white;
+        }
+        .navbar {
             background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         .navbar-brand {
             color: #bb86fc;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
 
         .nav-link {
             color: #e0e0e0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #bb86fc;
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
             color: #bb86fc;
         }
 
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
         .hero-section {
             background-color: #1f1b24;
             color: #bb86fc;
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(187,134,252,0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-section h1 {
             font-size: 3.5rem;
-            font-weight: bold;
-        }
-
-        .hero-section p {
-            font-size: 1.25rem;
-        }
-
-        .btn-purple {
-            background-color: #bb86fc;
-            color: #1e1e1e;
-        }
-
-        .btn-purple:hover {
-            background-color: #9f6ffb;
-            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .card {
             background-color: #1e1e1e;
             border: none;
-            color: #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .card img {
-            border-radius: 0.5rem;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            height: 220px;
+            object-fit: cover;
         }
 
         .card-title {
             color: #bb86fc;
+            font-weight: 600;
         }
 
-        .card-text {
-            color: #b0b0b0;
+        .btn-purple {
+            background-color: #bb86fc;
+            color: #1e1e1e;
+            border: none;
+            transition: all 0.3s ease;
         }
 
-        section {
-            padding: 60px 0;
-        }
-
-        footer {
-            background-color: #12121200;
-            padding: 20px 0;
-        }
-
-        /* Special YouTube Card */
-        .youtube-card {
+        .btn-purple:hover {
             background-color: #9f6ffb;
-            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
-        .youtube-card .card-title {
-            color: #ffffff;
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
         }
 
-        .youtube-card .btn-purple {
-            background-color: #ffffff;
+        .section-header h2 {
             color: #bb86fc;
+            display: inline-block;
+            position: relative;
+            padding: 0 20px;
         }
 
-        /* Special Discord Card */
+        .section-header h2::before,
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background-color: #bb86fc;
+        }
+
+        .section-header h2::before {
+            left: -60px;
+        }
+
+        .section-header h2::after {
+            right: -60px;
+        }
+
         .discord-card {
             background-color: #5865F2;
-            color: #ffffff;
+            color: white;
         }
 
         .discord-card .card-title {
-            color: #ffffff;
+            color: white;
         }
 
-        .discord-card .btn-purple {
-            background-color: #ffffff;
-            color: #7289da;
+        footer {
+            background-color: #1e1e1e;
+            padding: 20px 0;
+            text-align: center;
         }
-        a{
-            text-decoration: none;
-            color: #9f6ffb;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        .alert {
+            background-color: rgba(187,134,252,0.2);
+            border: none;
+            color: #bb86fc;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
-
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
             <a class="navbar-brand" href="#">Estin SRC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#websites">Websites</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#youtube-channels">YouTube</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#communities">Communities</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#websites">Websites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#youtube-channels">YouTube Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#communities">Communities</a></li>
                 </ul>
             </div>
         </div>
@@ -152,144 +204,144 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <!-- Logo -->
             <img src="logo.png" alt="Estin SRC Logo" class="mb-4" style="max-width: 150px;">
             <h1>Welcome to Estin SRC</h1>
-            <p>Your ultimate resource center for CS students at Estin.</p>
+            <p class="lead">Your ultimate resource center for CS students at Estin</p>
             <a href="#websites" class="btn btn-purple btn-lg mt-4">Get Started</a>
         </div>
     </section>
-    <!-- Notification for new C Cheatcode -->
-    <div class="alert alert-info text-center" role="alert">
-      <strong>📘 Sharing is caring!</strong> Share a book NOW! <a href="https://forms.gle/JiaYW6REqsS2nndQ9">Click here</a>
-  </div>
+
+    <!-- Notification -->
+    <div class="alert alert-dismissible fade show text-center" role="alert">
+        <strong>📘 Sharing is caring!</strong> Share a book NOW! 
+        <a href="https://forms.gle/JiaYW6REqsS2nndQ9" class="text-white">Click here</a>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
     <!-- Websites Section -->
     <section id="websites">
         <div class="container">
-            <h2 class="text-center">Websites</h2>
-            <p class="text-center">Explore a list of websites that offer valuable resources for CS students at Estin.</p>
+            <div class="section-header">
+                <h2>Websites</h2>
+            </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="imgs/estinBib.PNG" class="card-img-top" alt="Website Image">
+                    <div class="card">
+                        <img src="imgs/estinBib.PNG" class="card-img-top" alt="Estin Bib">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-globe"></i> Estin bib</h5>
-                            <p class="card-text">Estin Library is a platform that compiles all ESTIN courses, including TDs, EMDs, and corrections. It provides easy access to these resources, allowing you to quickly find what you need with just a click.</p>
+                            <h5 class="card-title"><i class="fas fa-globe me-2"></i>Estin Bib</h5>
+                            <p class="card-text">Comprehensive library of ESTIN courses, TDs, EMDs, and corrections.</p>
                             <a href="https://the-estin-bib.vercel.app/" class="btn btn-purple">Visit Website</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="imgs/estins.PNG" class="card-img-top" alt="Website Image">
+                    <div class="card">
+                        <img src="imgs/estins.PNG" class="card-img-top" alt="ESTIN Repository">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-globe"></i> ESTIN REPOSITORY</h5>
-                            <p class="card-text">ESTIN Student is a collection of Subjects, Exams & Courses of ESTIN. The website was created for the purpose of helping all computer science students.</p><br>
+                            <h5 class="card-title"><i class="fas fa-globe me-2"></i>ESTIN Repository</h5>
+                            <p class="card-text">Collection of subjects, exams, and courses for computer science students.</p>
                             <a href="https://estin-student.vercel.app/" class="btn btn-purple">Visit Website</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="imgs/tresorEsi.PNG" class="card-img-top" alt="Website Image">
+                    <div class="card">
+                        <img src="imgs/tresorEsi.PNG" class="card-img-top" alt="Tresor ESI">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-globe"></i> TRESOR ESI</h5>
-                            <p class="card-text">TRESOR ESI is a comprehensive platform that compiles a wide range of Subjects, Exams, and Courses from ESI, making it easy to access and explore all the academic resources you need in one convenient location.</p>
+                            <h5 class="card-title"><i class="fas fa-globe me-2"></i>Tresor ESI</h5>
+                            <p class="card-text">Comprehensive platform for academic resources from ESI.</p>
                             <a href="https://tresor.cse.club/" class="btn btn-purple">Visit Website</a>
                         </div>
                     </div>
                 </div>
-                <!-- Add more website cards as needed -->
             </div>
         </div>
     </section>
 
- <!-- YouTube Channels Section -->
- <section id="youtube-channels" class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">YouTube Courses</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4 course-card">
-                <div class="card">
-                    <img src="https://img.freepik.com/free-vector/binary-code-netwrok-technology-concept-background_1017-13992.jpg?t=st=1728930063~exp=1728933663~hmac=1b8993fff2a5f19008fbd7a2ca7c5b85c389b3185c0a079aadc4d2a4354bba1a&w=1380" class="card-img-top" alt="Course 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Structure Machine 1</h5>
-                        <p class="card-text">cours informatique Mahseur</p>
-                        <a href="https://www.youtube.com/playlist?list=PL-b5Zp9H7qBgrtYJ3YEO0wFI3Ua243-nA" class="btn btn-primary">Learn More</a>
+    <!-- YouTube Channels Section -->
+    <section id="youtube-channels">
+        <div class="container">
+            <div class="section-header">
+                <h2>YouTube Courses</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-vector/binary-code-netwrok-technology-concept-background_1017-13992.jpg" class="card-img-top" alt="Structure Machine Course">
+                        <div class="card-body">
+                            <h5 class="card-title">Structure Machine 1</h5>
+                            <p class="card-text">Computer science course by Mahseur</p>
+                            <a href="https://www.youtube.com/playlist?list=PL-b5Zp9H7qBgrtYJ3YEO0wFI3Ua243-nA" class="btn btn-purple">Watch Course</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://i.pinimg.com/564x/53/61/38/536138480e98eb665117fc3a40fa6bb5.jpg" class="card-img-top" alt="Algorithms Course">
+                        <div class="card-body">
+                            <h5 class="card-title">Algorithmes</h5>
+                            <p class="card-text">Algorithms course by Hassan El Bahi</p>
+                            <a href="https://www.youtube.com/playlist?list=PLZpzLuUp9qXwrApSukhtvpi4U6l-INcTI" class="btn btn-purple">Watch Course</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/free-vector/tiny-students-with-huge-sign-pi-flat-vector-illustration-boy-girl-studying-math-algebra-school-college-holding-ruler-using-laptop-geometric-figures-background-education-concept_74855-23227.jpg" class="card-img-top" alt="Analysis Course">
+                        <div class="card-body">
+                            <h5 class="card-title">Analyse 1</h5>
+                            <p class="card-text">Real numbers analysis by 15 Min Math Lr</p>
+                            <a href="https://www.youtube.com/playlist?list=PLgKSr97JkHD5bolvStigFu3J5iA4DepKg" class="btn btn-purple">Watch Course</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 course-card">
-                <div class="card">
-                    <img src="https://i.pinimg.com/564x/53/61/38/536138480e98eb665117fc3a40fa6bb5.jpg" class="card-img-top" alt="Course 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Algorithmes - الخوارزميات 1</h5>
-                        <p class="card-text">Hassan El Bahi</p>
-                        <a href="https://www.youtube.com/playlist?list=PLZpzLuUp9qXwrApSukhtvpi4U6l-INcTI" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4 course-card">
-                <div class="card">
-                    <img src="https://img.freepik.com/free-vector/tiny-students-with-huge-sign-pi-flat-vector-illustration-boy-girl-studying-math-algebra-school-college-holding-ruler-using-laptop-geometric-figures-background-education-concept_74855-23227.jpg?t=st=1728927633~exp=1728931233~hmac=445d770b8e5c08844fecaf0b75c994d5967c607a081370338f760b872695238b&w=1380" class="card-img-top" alt="Course 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Analyse 1 | les nombres réels</h5>
-                        <p class="card-text">15 Min Math Lr</p>
-                        <a href="https://www.youtube.com/playlist?list=PLgKSr97JkHD5bolvStigFu3J5iA4DepKg" class="btn btn-primary">Learn More</a>
-                    </div>
-                </div>
+            <div class="text-center mt-4">
+                <a href="eslist/profile.html" class="btn btn-purple btn-lg">Explore More</a>
             </div>
         </div>
-    </div>
-    <div class="text-center mt-4">
-        <a href="eslist/profile.html" class="btn btn-purple btn-lg">Explore More</a>
-    </div>
-</section>
-
+    </section>
 
     <!-- Communities Section -->
     <section id="communities">
         <div class="container">
-            <h2 class="text-center">Communities</h2>
-            <p class="text-center">Join communities where CS students at Estin can share knowledge and collaborate.</p>
+            <div class="section-header">
+                <h2>Communities</h2>
+            </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4 discord-card">
-                        <img src="imgs/prepaDiscord.png" class="card-img-top"
-                            alt="Discord Community Image">
+                <div class="col-md-6">
+                    <div class="card discord-card">
+                        <img src="imgs/prepaDiscord.png" class="card-img-top" alt="Prepa Hub Discord">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fab fa-discord"></i> Prepa hub 🎓</h5>
-                            <p class="card-text">Our server is designed to connect students from various schools and study levels. Whether you’re looking for academic help, project collaboration, or just a place to chill and chat, we’ve got you covered!</p>
+                            <h5 class="card-title"><i class="fab fa-discord me-2"></i>Prepa Hub 🎓</h5>
+                            <p class="card-text">Connect with students, find academic support, and collaborate on projects.</p>
                             <a href="https://discord.gg/yB8rSNetQJ" class="btn btn-purple">Join Community</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 discord-card">
-                        <img src="imgs/DevAlgeria.PNG" class="card-img-top"
-                            alt="Discord Community Image">
+                <div class="col-md-6">
+                    <div class="card discord-card">
+                        <img src="imgs/DevAlgeria.PNG" class="card-img-top" alt="DevAlgeria Discord">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fab fa-discord"></i> DevAlgeria</h5>
-                            <p class="card-text">You've joined a global community of developers dedicated to supporting creators of all levels and backgrounds. Everyone is welcome, from beginners to professionals.</p><br>
+                            <h5 class="card-title"><i class="fab fa-discord me-2"></i>DevAlgeria</h5>
+                            <p class="card-text">A global community for developers of all levels, from beginners to professionals.</p>
                             <a href="https://discord.gg/mRwpAXMtnD" class="btn btn-purple">Join Community</a>
                         </div>
                     </div>
                 </div>
-                <!-- Add more Discord community cards as needed -->
             </div>
         </div>
     </section>
 
-
     <!-- Footer -->
-    <footer class="text-white text-center">
-        <p>Made with ❤️ by <a href="https://github.com/Untitled-Master">Ahmed Bl</a></p>
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/Untitled-Master" style="color: #bb86fc;">Ahmed Bl</a></p>
         <a href="https://visitcount.itsvg.in">
-          <img src="https://visitcount.itsvg.in/api?id=ESTINSRC&label=Number%20of%20visits&color=12&icon=5&pretty=false" />
+            <img src="https://visitcount.itsvg.in/api?id=ESTINSRC&label=Number%20of%20visits&color=12&icon=5&pretty=false" alt="Visit Count"/>
         </a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
