@@ -1,0 +1,56 @@
+{
+    "TD": [
+      {
+        "institution": "ESI",
+        "link": "https://drive.google.com/drive/folders/1adpgma6IDpTXXNbPlZPchceZhS4tdPyf"
+      },
+      {
+        "institution": "ESI",
+        "link": "https://drive.google.com/drive/folders/1Y5EBCBC6vzuqGpFRHhGgDGDvPLl_3nlZ"
+      },
+      {
+        "institution": "ESTIN",
+        "link": "https://drive.google.com/drive/folders/15QZjcHKyzmHOqAt6EzvgzV8JQ1Oz7wU0"
+      },
+      {
+        "institution": "ESI SBA",
+        "link": "https://drive.google.com/drive/folders/1t_VyurxGQVt-uWLvgPPEEXAG-SuKsjFC"
+      },
+      {
+        "institution": "External 1",
+        "link": "https://drive.google.com/drive/folders/1aDeAuSoFc5rA4rbJFLqoulwlJodX3TGW"
+      },
+      {
+        "institution": "External 2",
+        "link": "https://drive.google.com/drive/folders/1b2C1gmdHcC7ZIxtUZlMvkw6noZWDl2GG"
+      },
+      {
+        "institution": "External 3",
+        "link": "https://drive.google.com/drive/folders/1icUDWPF6rfcHyFXS7UeGNCkSwCDYa-2x"
+      }
+    ],
+    "Interrogation": [
+      {
+        "institution": "ESI",
+        "link": "https://drive.google.com/drive/folders/1FypweYQq48JqZlX1gdRF8_W3oVwyiAsB"
+      },
+      {
+        "institution": "ESTIN",
+        "link": "https://drive.google.com/drive/folders/1awTWpGLte6hyUxpbfXC4ry4g0mFBIV0T"
+      }
+    ],
+    "Exams": [
+      {
+        "institution": "ESI",
+        "link": "https://drive.google.com/drive/folders/1GkZUUUNbnmbEowMp1EpVZvzfzc1HjJed"
+      },
+      {
+        "institution": "ESTIN",
+        "link": "https://drive.google.com/drive/folders/17dlJ3qrWgOl5_UDYLu4Fun1SSXoiWP0H"
+      },
+      {
+        "institution": "ESI SBA",
+        "link": "https://drive.google.com/drive/folders/1L8hPZ5d1tSfPRijrGEk_KSh2gqL9N3Nh"
+      }
+    ]
+  }

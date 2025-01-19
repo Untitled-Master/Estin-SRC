@@ -3,346 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estin SRC - Student Resource Center</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <meta name="google-site-verification" content="RnU6l2ywBgXn8cQGUx0A5MWPXideZCcld9fR6YRGP7w" />
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-        }
-        .card-text{
-            color: white;
-        }
-        .navbar {
-            background-color: #1e1e1e;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand {
-            color: #bb86fc;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .nav-link {
-            color: #e0e0e0;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #bb86fc;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #bb86fc;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .hero-section {
-            background-color: #1f1b24;
-            color: #bb86fc;
-            padding: 120px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, rgba(187,134,252,0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card {
-            background-color: #1e1e1e;
-            border: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .card-img-top {
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .card-title {
-            color: #bb86fc;
-            font-weight: 600;
-        }
-
-        .btn-purple {
-            background-color: #bb86fc;
-            color: #1e1e1e;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-purple:hover {
-            background-color: #9f6ffb;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-header h2 {
-            color: #bb86fc;
-            display: inline-block;
-            position: relative;
-            padding: 0 20px;
-        }
-
-        .section-header h2::before,
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 50px;
-            height: 2px;
-            background-color: #bb86fc;
-        }
-
-        .section-header h2::before {
-            left: -60px;
-        }
-
-        .section-header h2::after {
-            right: -60px;
-        }
-
-        .discord-card {
-            background-color: #5865F2;
-            color: white;
-        }
-
-        .discord-card .card-title {
-            color: white;
-        }
-
-        footer {
-            background-color: #1e1e1e;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .alert {
-            background-color: rgba(187,134,252,0.2);
-            border: none;
-            color: #bb86fc;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <meta name="description" content="ESTIN Source - Comprehensive educational resources across different domains">
+    <title>ESTIN Source | Educational Resources Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link id="theme-link" rel="stylesheet" href="themes/theme2/style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Estin SRC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">ESTIN <span>Src</span></h1>
+            <button class="theme-switcher" onclick="switchCSS()">
+                <i class="fas fa-adjust"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#websites">Websites</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#youtube-channels">YouTube Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#communities">Communities</a></li>
-                </ul>
+            <p class="hero-description">
+                Discover and access comprehensive collections of educational resources across different domains
+            </p>
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search resources..." aria-label="Search resources">
+                <i class="fas fa-search search-icon"></i>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <img src="logo.png" alt="Estin SRC Logo" class="mb-4" style="max-width: 150px;">
-            <h1>Welcome to Estin SRC</h1>
-            <p class="lead">Your ultimate resource center for CS students at Estin</p>
-            <a href="#websites" class="btn btn-purple btn-lg mt-4">Get Started</a>
-        </div>
-    </section>
-
-    <!-- Notification -->
-    <div class="alert alert-dismissible fade show text-center" role="alert">
-        <strong>📘 Sharing is caring!</strong> Share a book NOW! 
-        <a href="https://forms.gle/JiaYW6REqsS2nndQ9" class="text-white">Click here</a>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-    <!-- Websites Section -->
-    <section id="websites">
-        <div class="container">
-            <div class="section-header">
-                <h2>Websites</h2>
+    <main id="main-content" class="menu-grid">
+        <p class="no-results">No resources found matching your search.</p>
+        
+        <article class="menu-card" data-search-terms="architecture design patterns system blueprints software development infrastructure">
+            <div class="card-header">
+                <i class="fas fa-archway card-icon" aria-hidden="true"></i>
+                <h2 class="card-title">Architecture of Computer 1</h2>
+                <p class="card-description">
+                    Explore comprehensive architecture resources, design patterns, and system blueprints for modern software development
+                </p>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="imgs/estinBib.PNG" class="card-img-top" alt="Estin Bib">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-globe me-2"></i>Estin Bib</h5>
-                            <p class="card-text">Comprehensive library of ESTIN courses, TDs, EMDs, and corrections.</p>
-                            <a href="https://the-estin-bib.vercel.app/" class="btn btn-purple">Visit Website</a>
-                        </div>
-                    </div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Resources</div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="imgs/estins.PNG" class="card-img-top" alt="ESTIN Repository">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-globe me-2"></i>ESTIN Repository</h5>
-                            <p class="card-text">Collection of subjects, exams, and courses for computer science students.</p>
-                            <a href="https://estin-student.vercel.app/" class="btn btn-purple">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="imgs/tresorEsi.PNG" class="card-img-top" alt="Tresor ESI">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-globe me-2"></i>Tresor ESI</h5>
-                            <p class="card-text">Comprehensive platform for academic resources from ESI.</p>
-                            <a href="https://tresor.cse.club/" class="btn btn-purple">Visit Website</a>
-                        </div>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Categories</div>
                 </div>
             </div>
-        </div>
-    </section>
+            <a href="aoc/archi.html" class="card-link">
+                Access Resources <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </article>
 
-    <!-- YouTube Channels Section -->
-    <section id="youtube-channels">
-        <div class="container">
-            <div class="section-header">
-                <h2>YouTube Courses</h2>
+        <article class="menu-card" data-search-terms="mathematical analysis calculus analytical methods mathematics equations derivatives integrals">
+            <div class="card-header">
+                <i class="fas fa-chart-line card-icon" aria-hidden="true"></i>
+                <h2 class="card-title">Analysis 1</h2>
+                <p class="card-description">
+                    Deep dive into mathematical analysis, calculus, and analytical methods with practical examples
+                </p>
             </div>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://img.freepik.com/free-vector/binary-code-netwrok-technology-concept-background_1017-13992.jpg" class="card-img-top" alt="Structure Machine Course">
-                        <div class="card-body">
-                            <h5 class="card-title">Structure Machine 1</h5>
-                            <p class="card-text">Computer science course by Mahseur</p>
-                            <a href="https://www.youtube.com/playlist?list=PL-b5Zp9H7qBgrtYJ3YEO0wFI3Ua243-nA" class="btn btn-purple">Watch Course</a>
-                        </div>
-                    </div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Resources</div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://i.pinimg.com/564x/53/61/38/536138480e98eb665117fc3a40fa6bb5.jpg" class="card-img-top" alt="Algorithms Course">
-                        <div class="card-body">
-                            <h5 class="card-title">Algorithmes</h5>
-                            <p class="card-text">Algorithms course by Hassan El Bahi</p>
-                            <a href="https://www.youtube.com/playlist?list=PLZpzLuUp9qXwrApSukhtvpi4U6l-INcTI" class="btn btn-purple">Watch Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="https://img.freepik.com/free-vector/tiny-students-with-huge-sign-pi-flat-vector-illustration-boy-girl-studying-math-algebra-school-college-holding-ruler-using-laptop-geometric-figures-background-education-concept_74855-23227.jpg" class="card-img-top" alt="Analysis Course">
-                        <div class="card-body">
-                            <h5 class="card-title">Analyse 1</h5>
-                            <p class="card-text">Real numbers analysis by 15 Min Math Lr</p>
-                            <a href="https://www.youtube.com/playlist?list=PLgKSr97JkHD5bolvStigFu3J5iA4DepKg" class="btn btn-purple">Watch Course</a>
-                        </div>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Categories</div>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <a href="eslist/profile.html" class="btn btn-purple btn-lg">Explore More</a>
-            </div>
-        </div>
-    </section>
+            <a href="analysis/analysis.html" class="card-link">
+                Access Resources <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </article>
 
-    <!-- Communities Section -->
-    <section id="communities">
-        <div class="container">
-            <div class="section-header">
-                <h2>Communities</h2>
+        <article class="menu-card" data-search-terms="linear algebra abstract algebra mathematical structures matrices vectors spaces groups rings fields">
+            <div class="card-header">
+                <i class="fas fa-bolt card-icon" aria-hidden="true"></i>
+                <h2 class="card-title">Electricity 1</h2>
+                <p class="card-description">
+                    Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.
+                </p>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card discord-card">
-                        <img src="imgs/prepaDiscord.png" class="card-img-top" alt="Prepa Hub Discord">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fab fa-discord me-2"></i>Prepa Hub 🎓</h5>
-                            <p class="card-text">Connect with students, find academic support, and collaborate on projects.</p>
-                            <a href="https://discord.gg/yB8rSNetQJ" class="btn btn-purple">Join Community</a>
-                        </div>
-                    </div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">Resources</div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card discord-card">
-                        <img src="imgs/DevAlgeria.PNG" class="card-img-top" alt="DevAlgeria Discord">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fab fa-discord me-2"></i>DevAlgeria</h5>
-                            <p class="card-text">A global community for developers of all levels, from beginners to professionals.</p>
-                            <a href="https://discord.gg/mRwpAXMtnD" class="btn btn-purple">Join Community</a>
-                        </div>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Categories</div>
                 </div>
             </div>
-        </div>
-    </section>
+            <a href="elec/elec.html" class="card-link">
+                Access Resources <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </article>
 
-    <!-- Footer -->
-    <footer>
-        <p>Made with ❤️ by <a href="https://github.com/Untitled-Master" style="color: #bb86fc;">Ahmed Bl</a></p>
-        <a href="https://visitcount.itsvg.in">
-            <img src="https://visitcount.itsvg.in/api?id=ESTINSRC&label=Number%20of%20visits&color=12&icon=5&pretty=false" alt="Visit Count"/>
-        </a>
-    </footer>
+        <article class="menu-card" data-search-terms="linear algebra abstract algebra mathematical structures matrices vectors spaces groups rings fields">
+            <div class="card-header">
+                <i class="fas fa-calculator card-icon" aria-hidden="true"></i>
+                <h2 class="card-title">Algebra 1</h2>
+                <p class="card-description">
+                    Master linear algebra, abstract algebra, and mathematical structures through comprehensive guides
+                </p>
+            </div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Resources</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+            <a href="algebra1/algebra1.html" class="card-link">
+                Access Resources <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </article>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <article class="menu-card" data-search-terms="advanced systems data structures algorithms programming coding computer science optimization performance">
+            <div class="card-header">
+                <i class="fas fa-microchip card-icon" aria-hidden="true"></i>
+                <h2 class="card-title">ASDS</h2>
+                <p class="card-description">
+                    Learn advanced systems, data structures, and algorithms with practical implementations
+                </p>
+            </div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-number">220+</div>
+                    <div class="stat-label">Resources</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+            <a href="#asds" class="card-link">
+                Access Resources <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </article>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            const cards = document.querySelectorAll('.menu-card');
+            const noResults = document.querySelector('.no-results');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCards = 0;
+
+                cards.forEach(card => {
+                    const terms = card.dataset.searchTerms.toLowerCase();
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    
+                    if (terms.includes(searchTerm) || title.includes(searchTerm)) {
+                        card.classList.remove('hidden');
+                        visibleCards++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                noResults.style.display = visibleCards ? 'none' : 'block';
+            });
+        });
+        function switchCSS() {
+            const themeLink = document.getElementById('theme-link'); // Get the link element
+
+            // Check the current stylesheet and switch
+            if (themeLink.getAttribute('href') === 'themes/theme1/style.css') {
+                themeLink.setAttribute('href', 'themes/theme2/style.css');  // Switch to style2.css
+                localStorage.setItem('theme', 'themes/theme2/');   // Save the theme in local storage
+            } else {
+                themeLink.setAttribute('href', 'themes/theme1/style.css');  // Switch to style1.css
+                localStorage.setItem('theme', 'themes/theme1/');   // Save the theme in local storage
+            }
+        }
+            // Check for saved theme in localStorage on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeLink = document.getElementById('theme-link');
+            
+            if (savedTheme) {
+                themeLink.setAttribute('href', `${savedTheme}/style.css`);  // Apply saved theme
+            } else {
+                // If no saved theme, default to style1.css
+                themeLink.setAttribute('href', 'themes/theme2/style.css');
+            }
+        }
+    </script>
 </body>
 </html>

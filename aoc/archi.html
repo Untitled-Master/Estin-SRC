@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture of Computer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link id="theme-link" rel="stylesheet" href="../themes/theme2/style2.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="floating-dots dots-1"></div>
+        <div class="floating-dots dots-2"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to <span>Architecture of Computer</span></h1>
+            <p class="hero-description">
+                Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.
+            </p>
+            <a href="../index.html" class="hero-cta">
+                <i class="fas fa-home"></i>
+                HOME
+            </a>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="totalResources">0</div>
+                    <div class="hero-stat-label">Total Resources</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="institutions">0</div>
+                    <div class="hero-stat-label">Institutions</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="categories">0</div>
+                    <div class="hero-stat-label">Categories</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="main-content">
+        <!-- Sections will be dynamically added here -->
+    </div>
+
+    <script>
+        // Fetch and populate data from resources.json
+        fetch('resources.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update hero stats
+                document.getElementById('totalResources').innerText = data.TD.length + data.Interrogation.length + data.Exams.length;
+                document.getElementById('institutions').innerText = new Set([
+                    ...data.TD.map(item => item.institution),
+                    ...data.Interrogation.map(item => item.institution),
+                    ...data.Exams.map(item => item.institution)
+                ]).size; // Unique institutions
+                document.getElementById('categories').innerText = Object.keys(data).length;
+
+                // Function to create a section
+                const createSection = (sectionTitle, sectionData) => {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.classList.add('section');
+                    const sectionTitleDiv = document.createElement('div');
+                    sectionTitleDiv.classList.add('section-title');
+                    sectionTitleDiv.innerHTML = `
+                        <div class="title-left">
+                            <i class="fas fa-tasks"></i>
+                            <span>${sectionTitle}</span>
+                        </div>
+                        <span class="count-badge">${sectionData.length} items</span>
+                    `;
+                    sectionDiv.appendChild(sectionTitleDiv);
+
+                    const table = document.createElement('table');
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                                <th>Institution</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${sectionData.map(item => `
+                                <tr>
+                                    <td>${item.institution}</td>
+                                    <td><a href="${item.link}" target="_blank"><i class="fas fa-external-link-alt icon"></i> Access Files</a></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    `;
+                    sectionDiv.appendChild(table);
+                    document.getElementById('main-content').appendChild(sectionDiv);
+                };
+
+                // Create sections for TD, Interrogation, and Exams
+                createSection('TD', data.TD);
+                createSection('Interrogation', data.Interrogation);
+                createSection('Exams', data.Exams);
+            })
+            .catch(error => console.error('Error loading resources.json:', error));
+
+        // Check for saved theme in localStorage on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeLink = document.getElementById('theme-link');
+            
+            if (savedTheme) {
+                themeLink.setAttribute('href', `../${savedTheme}/style2.css`);  // Apply saved theme
+            } else {
+                // If no saved theme, default to style1.css
+                themeLink.setAttribute('href', '../themes/theme2/style2.css');
+            }
+        }
+    </script>
+</body>
+</html>

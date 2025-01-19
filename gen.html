@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Custom JSON Generator</h1>
+        <h2>TD Section</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Institution</th>
+                    <th>Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tdTableBody"></tbody>
+        </table>
+        <button onclick="addRow('td')">Add TD</button>
+
+        <h2>Exams Section</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Institution</th>
+                    <th>Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="examTableBody"></tbody>
+        </table>
+        <button onclick="addRow('exam')">Add Exam</button>
+
+        <h2>Interrogation Section</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Institution</th>
+                    <th>Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="interoTableBody"></tbody>
+        </table>
+        <button onclick="addRow('intero')">Add Interrogation</button>
+
+        <button onclick="generateJSON()">Generate JSON</button>
+        <h2>Generated JSON:</h2>
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        const jsonData = {
+            TD: [],
+            Exams: [],
+            Interrogation: []
+        };
+
+        function addRow(type) {
+            const tbody = document.getElementById(`${type}TableBody`);
+            const row = tbody.insertRow();
+
+            const institutionCell = row.insertCell(0);
+            const linkCell = row.insertCell(1);
+            const actionCell = row.insertCell(2);
+
+            institutionCell.innerHTML = '<input type="text" placeholder="Institution">';
+            linkCell.innerHTML = '<input type="text" placeholder="Link">';
+            actionCell.innerHTML = '<button onclick="removeRow(this)">Remove</button>';
+        }
+
+        function removeRow(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function generateJSON() {
+            jsonData.TD = getTableData('tdTableBody');
+            jsonData.Exams = getTableData('examTableBody');
+            jsonData.Interrogation = getTableData('interoTableBody');
+
+            document.getElementById('output').textContent = JSON.stringify(jsonData, null, 2);
+        }
+        
+        function getTableData(tbodyId) {
+            const rows = document.querySelectorAll(`#${tbodyId} tr`);
+            const data = [];
+
+            rows.forEach(row => {
+                const institution = row.cells[0].querySelector('input').value;
+                const link = row.cells[1].querySelector('input').value;
+                if (institution && link) {
+                    data.push({ institution, link });
+                }
+            });
+
+            return data;
+        }
+    </script>
+</body>
+</html>

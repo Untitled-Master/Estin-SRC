@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link id="theme-link" rel="stylesheet" href="../themes/theme2/style2.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="floating-dots dots-1"></div>
+        <div class="floating-dots dots-2"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to <span>Analysis 1</span></h1>
+            <p class="hero-description">
+                Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.
+            </p>
+            <a href="../index.html" class="hero-cta">
+                <i class="fas fa-home"></i>
+                HOME
+            </a>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="total-resources">13</div>
+                    <div class="hero-stat-label">Total Resources</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="institutions">3</div>
+                    <div class="hero-stat-label">Institutions</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="categories">3</div>
+                    <div class="hero-stat-label">Categories</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="main-content">
+        <div class="header">
+            <h1><i class="fas fa-archive"></i> Analysis 1</h1>
+            <div class="stats" id="stats-container"></div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div id="sections-container"></div>
+    </div>
+
+<script>
+    // Fetch data from JSON and populate the page
+    fetch('resources.json')
+        .then(response => response.json())
+        .then(data => {
+            // Update resource counts
+            document.getElementById('total-resources').textContent = getTotalResources(data);
+            document.getElementById('institutions').textContent = getUniqueInstitutionsCount(data);
+            document.getElementById('categories').textContent = Object.keys(data).length;
+
+            // Populate sections (TD, Interrogation, Exams)
+            const sectionsContainer = document.getElementById('sections-container');
+            Object.keys(data).forEach(category => {
+                const section = createSection(category, data[category]);
+                sectionsContainer.appendChild(section);
+            });
+
+            // Populate stats
+            const statsContainer = document.getElementById('stats-container');
+            statsContainer.innerHTML = `
+                <div class="stat-item">
+                    <i class="fas fa-folder"></i>
+                    <span>Total Resources: ${getTotalResources(data)}</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-building"></i>
+                    <span>Institutions: ${getUniqueInstitutionsCount(data)}</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-file"></i>
+                    <span>Categories: ${Object.keys(data).length}</span>
+                </div>
+            `;
+        });
+
+    // Function to get total number of resources across categories
+    function getTotalResources(data) {
+        return Object.values(data).reduce((acc, category) => acc + category.length, 0);
+    }
+
+    // Function to get unique number of institutions
+    function getUniqueInstitutionsCount(data) {
+        const institutions = new Set();
+        Object.values(data).forEach(category => {
+            category.forEach(item => institutions.add(item.institution));
+        });
+        return institutions.size;
+    }
+
+    // Function to create a section with a table for each category
+    function createSection(category, items) {
+        const section = document.createElement('div');
+        section.classList.add('section');
+        section.innerHTML = `
+            <div class="section-title">
+                <div class="title-left">
+                    <i class="fas fa-${getIconForCategory(category)}"></i>
+                    <span>${category}</span>
+                </div>
+                <span class="count-badge">${items.length} items</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Institution</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${items.map(item => `
+                        <tr>
+                            <td>${item.institution}</td>
+                            <td><a href="${item.link}" target="_blank"><i class="fas fa-external-link-alt icon"></i> Access Files</a></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+        return section;
+    }
+
+    // Function to get an icon based on the category
+    function getIconForCategory(category) {
+        switch (category) {
+            case 'TD':
+                return 'tasks';
+            case 'Interrogation':
+                return 'question-circle';
+            case 'Exams':
+                return 'file-alt';
+            default:
+                return 'folder';
+        }
+    }
+            // Check for saved theme in localStorage on page load
+    window.onload = function() {
+        const savedTheme = localStorage.getItem('theme');
+        const themeLink = document.getElementById('theme-link');
+        
+        if (savedTheme) {
+            themeLink.setAttribute('href', `../${savedTheme}/style2.css`);  // Apply saved theme
+        } else {
+            // If no saved theme, default to style1.css
+            themeLink.setAttribute('href', '../themes/theme2/style2.css');
+        }
+    }
+</script>
+
+</body>
+</html>
