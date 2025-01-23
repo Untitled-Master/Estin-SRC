@@ -8,27 +8,30 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link id="theme-link" rel="stylesheet" href="themes/theme2/style.css">
     <style>
-        #visit-counter-widget {
-          width: 200px;
-          padding: 20px;
-          background: #1e1e1e;
-          color: #fff;
-          font-family: Arial, sans-serif;
-          border-radius: 8px;
-          text-align: center;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        #visit-counter-widget p {
-          margin: 0;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        
-        #visit-count {
-          font-size: 24px;
-          color: #76c7c0;
-        }
+#visit-widget {
+    display: flex;
+    align-items: center;
+    background-color: #2f3b4c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+#visit-widget i {
+    font-size: 30px;
+    color: #4caf50;
+    margin-right: 15px;
+}
+#visit-widget h3 {
+    font-size: 14px;
+    margin: 0;
+}
+#visit-widget p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
     </style>
 </head>
@@ -232,9 +235,20 @@
         fetchVisitCount();
 
     </script>
+    <div id="visit-widget">
+    <i class="fas fa-users"></i>
+    <div>
+        <h3>Total Visits</h3>
+        <p id="total-visits">Loading...</p>
+    </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        fetch('https://visit-counter-estin-src.vercel.app/visits')
+            .then(response => response.json())
+            .then(data => document.getElementById('total-visits').textContent = data.visits.total_visits)
+            .catch(() => document.getElementById('total-visits').textContent = "Error loading data");
+    </script>
+
 </body>
 </html>
-<div id="visit-counter-widget">
-  <p>Website Visitors:</p>
-  <span id="visit-count">Loading...</span>
-</div>
