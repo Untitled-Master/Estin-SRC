@@ -7,6 +7,30 @@
     <title>ESTIN Source | Educational Resources Hub</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link id="theme-link" rel="stylesheet" href="themes/theme2/style.css">
+    <style>
+        #visit-counter-widget {
+          width: 200px;
+          padding: 20px;
+          background: #1e1e1e;
+          color: #fff;
+          font-family: Arial, sans-serif;
+          border-radius: 8px;
+          text-align: center;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        #visit-counter-widget p {
+          margin: 0;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        
+        #visit-count {
+          font-size: 24px;
+          color: #76c7c0;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -195,6 +219,22 @@
                 themeLink.setAttribute('href', 'themes/theme2/style.css');
             }
         }
+        async function fetchVisitCount() {
+          try {
+            const response = await fetch("http://127.0.0.1:5000/visit-counter");
+            const data = await response.json();
+            document.getElementById("visit-count").innerText = data.visit_count;
+          } catch (error) {
+            document.getElementById("visit-count").innerText = "Error!";
+          }
+        }
+        
+        fetchVisitCount();
+
     </script>
 </body>
 </html>
+<div id="visit-counter-widget">
+  <p>Website Visitors:</p>
+  <span id="visit-count">Loading...</span>
+</div>
