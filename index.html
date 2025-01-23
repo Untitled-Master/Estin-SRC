@@ -8,31 +8,29 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link id="theme-link" rel="stylesheet" href="themes/theme2/style.css">
     <style>
-#visit-widget {
-    display: flex;
-    align-items: center;
-    background-color: #2f3b4c;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    width: 250px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-#visit-widget i {
-    font-size: 30px;
-    color: #4caf50;
-    margin-right: 15px;
-}
-#visit-widget h3 {
-    font-size: 14px;
-    margin: 0;
-}
-#visit-widget p {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-
+        #visit-widget {
+            display: flex;
+            align-items: center;
+            background-color: #2f3b4c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        #visit-widget i {
+            font-size: 30px;
+            color: #4caf50;
+            margin-right: 15px;
+        }
+        #visit-widget h3 {
+            font-size: 14px;
+            margin: 0;
+        }
+        #visit-widget p {
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -222,51 +220,30 @@
                 themeLink.setAttribute('href', 'themes/theme2/style.css');
             }
         }
-        async function fetchVisitCount() {
-          try {
-            const response = await fetch("https://visit-counter-estin-src.vercel.app/visits");
-            const data = await response.json();
-            document.getElementById("visit-count").innerText = data.visit_count;
-          } catch (error) {
-            document.getElementById("visit-count").innerText = "Error!";
-          }
-        }
-        
-        fetchVisitCount();
 
     </script>
     <div id="visit-widget">
-    <i class="fas fa-users"></i>
-    <div>
-        <h3>Total Visits</h3>
-        <p id="total-visits">Loading...</p>
+        <i class="fas fa-users"></i>
+        <div>
+            <h3>Total Visits</h3>
+            <p id="total-visits">Loading...</p>
+        </div>
     </div>
-    </div>
-<div id="visit-widget">
-    <i class="fas fa-users"></i>
-    <div>
-        <h3>Total Visits</h3>
-        <p id="total-visits">Loading...</p>
-    </div>
-</div>
 
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script>
-    let visited = false; // Flag to prevent multiple increments in a single session
+    <script>
+        async function fetchVisitCount() {
+            try {
+                const response = await fetch("https://visit-counter-estin-src.vercel.app/visits");
+                const data = await response.json();
+                document.getElementById("total-visits").innerText = data.visits.total_visits;
+            } catch (error) {
+                document.getElementById("total-visits").innerText = "Error loading data";
+            }
+        }
 
-    if (!visited) {
-        fetch('https://visit-counter-estin-src.vercel.app/visits')
-            .then(response => response.json())
-            .then(data => {
-                // Update total visits only once
-                document.getElementById('total-visits').textContent = data.visits.total_visits;
-                visited = true;  // Set the flag to prevent further increments
-            })
-            .catch(() => {
-                document.getElementById('total-visits').textContent = "Error loading data";
-            });
-    }
-</script>
+        // Fetch the visit count on page load
+        fetchVisitCount();
+    </script>
 
 </body>
 </html>
