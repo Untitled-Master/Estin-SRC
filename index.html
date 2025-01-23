@@ -242,13 +242,31 @@
         <p id="total-visits">Loading...</p>
     </div>
     </div>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script>
+<div id="visit-widget">
+    <i class="fas fa-users"></i>
+    <div>
+        <h3>Total Visits</h3>
+        <p id="total-visits">Loading...</p>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    let visited = false; // Flag to prevent multiple increments in a single session
+
+    if (!visited) {
         fetch('https://visit-counter-estin-src.vercel.app/visits')
             .then(response => response.json())
-            .then(data => document.getElementById('total-visits').textContent = data.visits.total_visits)
-            .catch(() => document.getElementById('total-visits').textContent = "Error loading data");
-    </script>
+            .then(data => {
+                // Update total visits only once
+                document.getElementById('total-visits').textContent = data.visits.total_visits;
+                visited = true;  // Set the flag to prevent further increments
+            })
+            .catch(() => {
+                document.getElementById('total-visits').textContent = "Error loading data";
+            });
+    }
+</script>
 
 </body>
 </html>
