@@ -221,7 +221,7 @@
         }
         async function fetchVisitCount() {
           try {
-            const response = await fetch("http://127.0.0.1:5000/visit-counter");
+            const response = await fetch("https://visit-counter-estin-src.vercel.app/visits");
             const data = await response.json();
             document.getElementById("visit-count").innerText = data.visit_count;
           } catch (error) {
