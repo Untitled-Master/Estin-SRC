@@ -1,5 +1,6 @@
 import { Bell, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import VisitCounter from '../v';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Navbar = () => {
           <a href="/books" className="hover:text-gray-300 transition-colors">
             Books
           </a>
+          <VisitCounter />
         </div>
 
         {/* Right side navigation */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Mail } from 'lucide-react';
 
+
 const Footer = () => {
   const [hoveredIcon, setHoveredIcon] = useState(null);
 

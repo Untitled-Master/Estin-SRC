@@ -7,7 +7,7 @@ import Books from './pages/Books';
 import JSONGenerator from './pages/gen';
 import Account from './pages/account';
 import Notification from './pages/Notification';
-import UnderConstruction from './pages/UnderConstruction'
+import DashboardPage from './pages/dash';
 function App() {
   return (
     <Router>
@@ -20,6 +20,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, HelpCircle, ArrowRight } from 'lucide-react';
+import VisitCounter from '../components/v'; 
 
 const NotFound = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,6 +19,7 @@ const NotFound = () => {
 
   return (
     <div className="relative h-screen overflow-hidden bg-[#09090B] select-none">
+      <VisitCounter />
       {/* Interactive Background */}
       <div 
         className="absolute inset-0 opacity-30 transition-all duration-500" 
