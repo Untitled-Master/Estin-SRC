@@ -10,6 +10,11 @@ import Notification from './pages/Notification';
 import DashboardPage from './pages/dash';
 import LogsPage from './pages/logs'
 import BookSubmissionForm from './pages/bookSubmit'
+import QCMPage from './pages/qcm'
+import HomePage from "./pages/Qcm/HomePage"
+import QuizPage from "./pages/Qcm/QuizPage"
+import Layout from "./components/Layout"
+
 function App() {
   return (
     <Router>
@@ -25,6 +30,10 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/logs" element={<LogsPage />} />
         <Route path="/bookSubmit" element={<BookSubmissionForm />} />
+        <Route path="/qcm" element={<QCMPage />} />
+        <Route path="/quiz/:idd" element={<HomePage />} />
+        <Route path="/quiz/:idd/:id" element={<QuizPage />} />
+
 
       </Routes>
     </Router>
