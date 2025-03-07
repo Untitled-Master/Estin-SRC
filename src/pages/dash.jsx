@@ -36,7 +36,6 @@ const VisitDashboard = () => {
   const chartData = visits?.dailyVisits 
     ? Object.entries(visits.dailyVisits)
         .slice(-7)
-        .reverse()
         .map(([date, count]) => ({
           date: new Date(date).toLocaleDateString('en-US', { 
             month: 'short', 
