@@ -9,6 +9,7 @@ import Account from './pages/account';
 import Notification from './pages/Notification';
 import DashboardPage from './pages/dash';
 import LogsPage from './pages/logs'
+import BookSubmissionForm from './pages/bookSubmit'
 function App() {
   return (
     <Router>
@@ -23,6 +24,8 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/logs" element={<LogsPage />} />
+        <Route path="/bookSubmit" element={<BookSubmissionForm />} />
+
       </Routes>
     </Router>
   );
