@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, FileText, Calendar, Users, ArrowRight, Code2, MapPin } from 'lucide-react';
+import { BookOpen, FileText, Calendar, Users, ArrowRight, Code2, MapPin, Book, FileDigit } from 'lucide-react';
 import Navbar from '../components/Navbar/Navbar';
 import { useParams } from 'react-router-dom';
 
@@ -9,7 +9,9 @@ const CoursePage = () => {
     course: { name: '', description: '', imageUrl: '', stats: { totalResources: 0, institutions: 0, categories: 0 } },
     TD: [],
     Interrogation: [],
-    Exams: []
+    Exams: [],
+    Resumes: [],
+    Books: []
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,7 +40,7 @@ const CoursePage = () => {
     );
   }
 
-  const { course, TD, Interrogation, Exams } = courseData;
+  const { course, TD, Interrogation, Exams, Resumes, Books } = courseData;
 
   return (
     <>
@@ -74,7 +76,7 @@ const CoursePage = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
-                    <span>2023-2024 Academic Year</span>
+                    <span>2024-2025 Academic Year</span>
                   </div>
                 </div>
                 <div className="mt-2 text-zinc-400">
@@ -155,6 +157,56 @@ const CoursePage = () => {
                     >
                       <div className="flex items-center gap-3">
                         <FileText className="w-5 h-5 text-zinc-400" />
+                        <span className="text-white">{item.institution}</span>
+                      </div>
+                      <span className="text-zinc-500">→</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Resumes Section */}
+              <div className="bg-zinc-900/50 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-zinc-800">
+                <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                  <FileDigit className="w-5 h-5" />
+                  Resumes
+                </h2>
+                <div className="space-y-4">
+                  {Resumes.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-between p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <FileDigit className="w-5 h-5 text-zinc-400" />
+                        <span className="text-white">{item.institution}</span>
+                      </div>
+                      <span className="text-zinc-500">→</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Books Section */}
+              <div className="bg-zinc-900/50 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-zinc-800">
+                <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+                  <Book className="w-5 h-5" />
+                  Books
+                </h2>
+                <div className="space-y-4">
+                  {Books.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-between p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <Book className="w-5 h-5 text-zinc-400" />
                         <span className="text-white">{item.institution}</span>
                       </div>
                       <span className="text-zinc-500">→</span>

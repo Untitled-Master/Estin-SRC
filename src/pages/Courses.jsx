@@ -59,6 +59,51 @@ const CoursesGrid = () => {
       resources: 15,
       level: "1cp",
       imageUrl: "https://i.pinimg.com/736x/4a/d2/75/4ad275686aa68998cfcbd139707d8847.jpg"
+    },
+    {
+      id: 7,
+      title: "Analysis 2",
+      description: "Advanced calculus course exploring limit development, function expansions, and Riemann integration through formal sums and partitions.",
+      institution: 8,
+      resources: 14,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/f9/07/ad/f907ad47428d4f18f39d2a274c9f6fef.jpg"
+    },
+    {
+      id: 8,
+      title: "Introduction to Operating System 2",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 8,
+      resources: 13,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/ef/c6/75/efc675b96f6ca9ec8ac8cba126c44976.jpg"
+    },
+    {
+      id: 9,
+      title: "ASDD - ALGO 2",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 14,
+      resources: 17,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/80/00/ec/8000eca0fcf082d6f314ff3331c81e38.jpg"
+    },
+    {
+      id: 10,
+      title: "Fundamental Electronics 1",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 16,
+      resources: 21,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/c1/11/51/c11151bd3df847968bd8bbc1a931a159.jpg"
+    },
+    {
+      "id": "11",
+      "title": "MECA - Mechanics of the Point",
+      "description": "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      "institution": 16,
+      "resources": 9,
+      "level": "1cp",
+      "imageUrl": "https://i.pinimg.com/736x/f1/43/5b/f1435b742f7a6bf03cabf843cee61c00.jpg"
     }
   ];
 

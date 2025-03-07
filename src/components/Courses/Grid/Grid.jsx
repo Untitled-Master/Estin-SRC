@@ -56,6 +56,24 @@ const CoursesGrid = () => {
       resources: 15,
       level: "1cp",
       imageUrl: "https://i.pinimg.com/736x/4a/d2/75/4ad275686aa68998cfcbd139707d8847.jpg"
+    },
+    {
+      id: 7,
+      title: "Analysis 2",
+      description: "Advanced calculus course exploring limit development, function expansions, and Riemann integration through formal sums and partitions.",
+      institution: 8,
+      resources: 14,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/f9/07/ad/f907ad47428d4f18f39d2a274c9f6fef.jpg"
+    },
+    {
+      id: 8,
+      title: "Introduction to Operating System 2",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 8,
+      resources: 13,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/ef/c6/75/efc675b96f6ca9ec8ac8cba126c44976.jpg"
     }
   ];
 
