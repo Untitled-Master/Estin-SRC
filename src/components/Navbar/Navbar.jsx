@@ -1,4 +1,4 @@
-import { Bell, User } from 'lucide-react';
+import { Bell, User, BellDot } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import VisitCounter from '../v';
 
@@ -23,8 +23,8 @@ const Navbar = () => {
 
         {/* Right side navigation */}
         <div className="flex items-center space-x-6">
-          <button onClick={() => navigate('/notification')} className="hover:text-gray-300 transition-colors">
-            <Bell size={20} />
+          <button onClick={() => navigate("/notification")} className="text-red-600 hover:text-red-300 transition-colors">
+            <BellDot size={20} />
           </button>
           <button onClick={() => navigate('/account')} className="hover:text-gray-300 transition-colors">
             <User size={20} /> 

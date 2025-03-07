@@ -22,9 +22,9 @@ const NotificationPage = () => {
     {
       id: 1,
       type: 'grade',
-      title: "We opened",
-      message: "a new start",
-      time: "3 Mar. 2025",
+      title: "Submit a book",
+      message: "go to https://estinsrc.vercel.app/books to submit a book",
+      time: "7 Mar. 2025",
       read: false,
       icon: GraduationCap,
       priority: "high"
