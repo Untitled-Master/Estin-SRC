@@ -12,7 +12,7 @@ const VisitCounter = () => {
     const fetchVisits = async () => {
       try {
         const response = await fetch(
-          "https://visitcounter-estinsrc-production.up.railway.app/dashboard", 
+          "https://visitcounter-estinsrc.onrender.com/dashboard", 
           { signal }
         );
         const data = await response.json();
