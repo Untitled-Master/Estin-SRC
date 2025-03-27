@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb} % For \mathbb
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Polynômes}
+
+\subsection*{Définition}
+Un polynôme $P(X)$ à coefficients dans un corps $K$ (par exemple $K = \mathbb{R}$ ou $K = \mathbb{C}$) est une expression de la forme :
+\[ P(X) = \sum_{i=0}^n a_i X^i = a_n X^n + a_{n-1} X^{n-1} + \dots + a_1 X + a_0 \]
+où $a_i \in K$ sont les coefficients et $n$ est un entier naturel.
+
+\subsection*{Degré d'un polynôme}
+\begin{itemize}
+    \item Le \textbf{degré} de $P$, noté $\deg P$, est le plus grand entier $i$ tel que le coefficient $a_i$ est non nul ($a_i \neq 0$).
+    \item Un polynôme de la forme $P(X) = a_0$ (avec $a_0 \in K$) est appelé un \textbf{polynôme constant}. Si $a_0 \neq 0$, alors $\deg P = 0$.
+    \item Le degré du \textbf{polynôme nul} ($P(X) = 0$, c'est-à-dire tous les $a_i = 0$) est défini par convention comme étant $-\infty$. (Note : Certains auteurs considèrent que le degré du polynôme nul n'est pas défini.)
+\end{itemize}
+
+\subsection*{Exemples}
+\begin{itemize}
+    \item $P(X) = X^3 - 5X + 3$ est de degré $3$.
+    \item $P(X) = X^{n+1}$ est de degré $n+1$.
+    \item $P(X) = 2$ est un polynôme constant de degré $0$.
+\end{itemize}
+
+\subsection*{Opérations sur les polynômes}
+
+\subsubsection*{Égalité}
+Soient deux polynômes :
+\begin{align*}
+P(X) &= a_n X^n + a_{n-1} X^{n-1} + \dots + a_1 X + a_0 \\
+Q(X) &= b_m X^m + b_{m-1} X^{m-1} + \dots + b_1 X + b_0
+\end{align*}
+Pour pouvoir comparer les coefficients terme à terme, on complète si nécessaire avec des coefficients nuls pour que les polynômes aient formellement le même plus grand indice $N = \max(n,m)$.
+\[ P(X) = \sum_{i=0}^N a_i X^i \quad \text{et} \quad Q(X) = \sum_{i=0}^N b_i X^i \]
+(en posant $a_i = 0$ si $i>n$ et $b_i = 0$ si $i>m$).
+
+Alors $P = Q$ si et seulement si $a_i = b_i$ pour tout $i \in \{0, 1, \dots, N\}$.
+
+\subsubsection*{Addition}
+La somme de $P$ et $Q$ (en supposant $N = n \ge m$ pour simplifier l'écriture, et $b_i = 0$ pour $i>m$) est définie par :
+\[ (P+Q)(X) = \sum_{i=0}^n (a_i + b_i) X^i \]
+\[ P(X) + Q(X) = (a_n + b_n) X^n + (a_{n-1} + b_{n-1}) X^{n-1} + \dots + (a_1 + b_1) X + (a_0 + b_0) \]
+(Note : $\deg(P+Q) \le \max(\deg P, \deg Q)$)
+
+\end{document}
