@@ -1,9 +1,11 @@
 function App() {
   return (
-      The heavier the rain
-      The heavier the snow
-      The heavier the weight
-      After watching you go
+    <>
+      <p>The heavier the rain</p>
+      <p>The heavier the snow</p>
+      <p>The heavier the weight</p>
+      <p>After watching you go</p>
+    </>
   );
 }
 
