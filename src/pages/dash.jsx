@@ -41,63 +41,123 @@ const VisitDashboard = () => {
   const countryFlags = {
     "United States": "🇺🇸",
     USA: "🇺🇸",
+    US: "🇺🇸",
     Canada: "🇨🇦",
+    CA: "🇨🇦",
     "United Kingdom": "🇬🇧",
     UK: "🇬🇧",
+    GB: "🇬🇧",
     Germany: "🇩🇪",
+    DE: "🇩🇪",
     France: "🇫🇷",
+    FR: "🇫🇷",
     Italy: "🇮🇹",
+    IT: "🇮🇹",
     Spain: "🇪🇸",
+    ES: "🇪🇸",
     Netherlands: "🇳🇱",
+    NL: "🇳🇱",
     Belgium: "🇧🇪",
+    BE: "🇧🇪",
     Switzerland: "🇨🇭",
+    CH: "🇨🇭",
     Austria: "🇦🇹",
+    AT: "🇦🇹",
     Sweden: "🇸🇪",
+    SE: "🇸🇪",
     Norway: "🇳🇴",
+    NO: "🇳🇴",
     Denmark: "🇩🇰",
+    DK: "🇩🇰",
     Finland: "🇫🇮",
+    FI: "🇫🇮",
     Poland: "🇵🇱",
+    PL: "🇵🇱",
     "Czech Republic": "🇨🇿",
+    CZ: "🇨🇿",
     Hungary: "🇭🇺",
+    HU: "🇭🇺",
     Romania: "🇷🇴",
+    RO: "🇷🇴",
     Bulgaria: "🇧🇬",
+    BG: "🇧🇬",
     Greece: "🇬🇷",
+    GR: "🇬🇷",
     Portugal: "🇵🇹",
+    PT: "🇵🇹",
     Ireland: "🇮🇪",
+    IE: "🇮🇪",
     Russia: "🇷🇺",
+    RU: "🇷🇺",
     Ukraine: "🇺🇦",
+    UA: "🇺🇦",
     Turkey: "🇹🇷",
+    TR: "🇹🇷",
     Israel: "🇮🇱",
+    IL: "🇮🇱",
     "Saudi Arabia": "🇸🇦",
+    SA: "🇸🇦",
     UAE: "🇦🇪",
+    AE: "🇦🇪",
     India: "🇮🇳",
+    IN: "🇮🇳",
     China: "🇨🇳",
+    CN: "🇨🇳",
     Japan: "🇯🇵",
+    JP: "🇯🇵",
     "South Korea": "🇰🇷",
+    KR: "🇰🇷",
     Singapore: "🇸🇬",
+    SG: "🇸🇬",
     Malaysia: "🇲🇾",
+    MY: "🇲🇾",
     Thailand: "🇹🇭",
+    TH: "🇹🇭",
     Vietnam: "🇻🇳",
+    VN: "🇻🇳",
     Philippines: "🇵🇭",
+    PH: "🇵🇭",
     Indonesia: "🇮🇩",
+    ID: "🇮🇩",
     Australia: "🇦🇺",
+    AU: "🇦🇺",
     "New Zealand": "🇳🇿",
+    NZ: "🇳🇿",
     Brazil: "🇧🇷",
+    BR: "🇧🇷",
     Argentina: "🇦🇷",
+    AR: "🇦🇷",
     Chile: "🇨🇱",
+    CL: "🇨🇱",
     Colombia: "🇨🇴",
+    CO: "🇨🇴",
     Mexico: "🇲🇽",
+    MX: "🇲🇽",
     Peru: "🇵🇪",
+    PE: "🇵🇪",
     Venezuela: "🇻🇪",
+    VE: "🇻🇪",
     "South Africa": "🇿🇦",
+    ZA: "🇿🇦",
     Egypt: "🇪🇬",
+    EG: "🇪🇬",
     Nigeria: "🇳🇬",
+    NG: "🇳🇬",
     Kenya: "🇰🇪",
+    KE: "🇰🇪",
     Morocco: "🇲🇦",
+    MA: "🇲🇦",
     Algeria: "🇩🇿",
+    DZ: "🇩🇿",
     Tunisia: "🇹🇳",
+    TN: "🇹🇳",
     Ethiopia: "🇪🇹",
+    ET: "🇪🇹",
     Ghana: "🇬🇭",
+    GH: "🇬🇭",
+    Local: "🏠",
+    localhost: "🏠",
+    "127.0.0.1": "🏠",
   }
 
   const getCountryFlag = (country) => {
@@ -155,11 +215,25 @@ const VisitDashboard = () => {
     if (!dashboardData?.hourlyStats) return []
 
     const today = new Date().toISOString().split("T")[0]
-    const todayHours = dashboardData.hourlyStats[today] || {}
+    const todayHours = dashboardData.hourlyStats[today]
 
+    // Handle both array and object formats
+    if (Array.isArray(todayHours)) {
+      return Array.from({ length: 24 }, (_, hour) => ({
+        hour: `${hour.toString().padStart(2, "0")}:00`,
+        visits: todayHours[hour] || 0,
+      }))
+    } else if (todayHours && typeof todayHours === "object") {
+      return Array.from({ length: 24 }, (_, hour) => ({
+        hour: `${hour.toString().padStart(2, "0")}:00`,
+        visits: todayHours[hour] || 0,
+      }))
+    }
+
+    // Fallback: return empty data for all 24 hours
     return Array.from({ length: 24 }, (_, hour) => ({
-      hour: `${hour}:00`,
-      visits: todayHours[hour] || 0,
+      hour: `${hour.toString().padStart(2, "0")}:00`,
+      visits: 0,
     }))
   }
 
@@ -382,7 +456,14 @@ const VisitDashboard = () => {
               <CardContent className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={hourlyData}>
-                    <XAxis dataKey="hour" stroke="#888888" fontSize={10} tickLine={false} axisLine={false} />
+                    <XAxis
+                      dataKey="hour"
+                      stroke="#888888"
+                      fontSize={10}
+                      tickLine={false}
+                      axisLine={false}
+                      interval={2}
+                    />
                     <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
                     <Tooltip
                       contentStyle={{
