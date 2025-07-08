@@ -170,10 +170,15 @@ const VisitDashboard = () => {
     )
   }
 
+  const backgroundPattern = {
+    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%239C92AC' fillOpacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+    opacity: 0.2,
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fillRule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fillOpacity=\"0.05\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-      
+      <div className="absolute inset-0" style={backgroundPattern}></div>
+
       <div className="relative z-10 p-6 space-y-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -205,7 +210,9 @@ const VisitDashboard = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="text-4xl font-bold text-white mb-1">{(dashboardData?.totalVisits || 0).toLocaleString()}</div>
+                <div className="text-4xl font-bold text-white mb-1">
+                  {(dashboardData?.totalVisits || 0).toLocaleString()}
+                </div>
                 <p className="text-xs text-gray-300">All time visitors</p>
               </CardContent>
             </Card>
@@ -214,7 +221,7 @@ const VisitDashboard = () => {
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium text-gray-200">Today's Visits</CardTitle>
                 <div className="p-2 bg-green-500/20 rounded-lg">
-                  {trend.direction === 'up' ? (
+                  {trend.direction === "up" ? (
                     <ChevronUp className="h-5 w-5 text-green-400" />
                   ) : (
                     <ChevronDown className="h-5 w-5 text-red-400" />
@@ -223,7 +230,7 @@ const VisitDashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="text-4xl font-bold text-white mb-1">{todayVisits.toLocaleString()}</div>
-                <p className={`text-xs ${trend.direction === 'up' ? 'text-green-300' : 'text-red-300'}`}>
+                <p className={`text-xs ${trend.direction === "up" ? "text-green-300" : "text-red-300"}`}>
                   {trend.percentage}% {trend.direction} from yesterday
                 </p>
               </CardContent>
@@ -253,7 +260,9 @@ const VisitDashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="text-4xl font-bold text-white mb-1">
-                  {hourlyData.length ? hourlyData.reduce((max, curr) => curr.visits > max.visits ? curr : max).hour : '--'}
+                  {hourlyData.length
+                    ? hourlyData.reduce((max, curr) => (curr.visits > max.visits ? curr : max)).hour
+                    : "--"}
                 </div>
                 <p className="text-xs text-gray-300">Most active time today</p>
               </CardContent>
@@ -275,35 +284,24 @@ const VisitDashboard = () => {
               <CardContent className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={chartData}>
-                    <XAxis 
-                      dataKey="date" 
-                      stroke="#E5E7EB" 
-                      fontSize={12}
-                      tickLine={false}
-                      axisLine={false}
-                    />
-                    <YAxis 
-                      stroke="#E5E7EB" 
-                      fontSize={12}
-                      tickLine={false}
-                      axisLine={false}
-                    />
-                    <Tooltip 
+                    <XAxis dataKey="date" stroke="#E5E7EB" fontSize={12} tickLine={false} axisLine={false} />
+                    <YAxis stroke="#E5E7EB" fontSize={12} tickLine={false} axisLine={false} />
+                    <Tooltip
                       contentStyle={{
-                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                        border: '1px solid rgba(59, 130, 246, 0.5)',
-                        borderRadius: '12px',
-                        color: '#FFFFFF',
-                        backdropFilter: 'blur(10px)'
+                        backgroundColor: "rgba(15, 23, 42, 0.95)",
+                        border: "1px solid rgba(59, 130, 246, 0.5)",
+                        borderRadius: "12px",
+                        color: "#FFFFFF",
+                        backdropFilter: "blur(10px)",
                       }}
                     />
-                    <Line 
-                      type="monotone" 
-                      dataKey="visits" 
-                      stroke="#3B82F6" 
+                    <Line
+                      type="monotone"
+                      dataKey="visits"
+                      stroke="#3B82F6"
                       strokeWidth={4}
-                      dot={{ fill: '#3B82F6', strokeWidth: 2, r: 6 }}
-                      activeDot={{ r: 8, fill: '#60A5FA' }}
+                      dot={{ fill: "#3B82F6", strokeWidth: 2, r: 6 }}
+                      activeDot={{ r: 8, fill: "#60A5FA" }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -323,39 +321,18 @@ const VisitDashboard = () => {
               <CardContent className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={hourlyData}>
-                    <XAxis 
-                      dataKey="hour" 
-                      stroke="#E5E7EB" 
-                      fontSize={10}
-                      tickLine={false}
-                      axisLine={false}
-                    />
-                    <YAxis 
-                      stroke="#E5E7EB" 
-                      fontSize={12}
-                      tickLine={false}
-                      axisLine={false}
-                    />
-                    <Tooltip 
+                    <XAxis dataKey="hour" stroke="#E5E7EB" fontSize={10} tickLine={false} axisLine={false} />
+                    <YAxis stroke="#E5E7EB" fontSize={12} tickLine={false} axisLine={false} />
+                    <Tooltip
                       contentStyle={{
-                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                        border: '1px solid rgba(249, 115, 22, 0.5)',
-                        borderRadius: '12px',
-                        color: '#FFFFFF',
-                        backdropFilter: 'blur(10px)'
+                        backgroundColor: "rgba(15, 23, 42, 0.95)",
+                        border: "1px solid rgba(249, 115, 22, 0.5)",
+                        borderRadius: "12px",
+                        color: "#FFFFFF",
+                        backdropFilter: "blur(10px)",
                       }}
                     />
-                    <Bar 
-                      dataKey="visits" 
-                      fill="url(#orangeGradient)"
-                      radius={[6, 6, 0, 0]}
-                    />
-                    <defs>
-                      <linearGradient id="orangeGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#F97316" />
-                        <stop offset="100%" stopColor="#EA580C" />
-                      </linearGradient>
-                    </defs>
+                    <Bar dataKey="visits" fill="#F97316" radius={[6, 6, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -391,13 +368,13 @@ const VisitDashboard = () => {
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip 
+                      <Tooltip
                         contentStyle={{
-                          backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                          border: '1px solid rgba(147, 51, 234, 0.5)',
-                          borderRadius: '12px',
-                          color: '#FFFFFF',
-                          backdropFilter: 'blur(10px)'
+                          backgroundColor: "rgba(15, 23, 42, 0.95)",
+                          border: "1px solid rgba(147, 51, 234, 0.5)",
+                          borderRadius: "12px",
+                          color: "#FFFFFF",
+                          backdropFilter: "blur(10px)",
                         }}
                       />
                     </PieChart>
@@ -407,15 +384,10 @@ const VisitDashboard = () => {
                   {countryData.map((entry, index) => (
                     <div key={entry.name} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div 
-                          className="w-4 h-4 rounded-full shadow-lg"
-                          style={{ backgroundColor: entry.color }}
-                        />
+                        <div className="w-4 h-4 rounded-full shadow-lg" style={{ backgroundColor: entry.color }} />
                         <span className="text-white font-medium">{entry.name}</span>
                       </div>
-                      <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                        {entry.value}
-                      </Badge>
+                      <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">{entry.value}</Badge>
                     </div>
                   ))}
                 </div>
@@ -449,13 +421,13 @@ const VisitDashboard = () => {
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip 
+                      <Tooltip
                         contentStyle={{
-                          backgroundColor: 'rgba(15, 23, 42, 0.95)',
-                          border: '1px solid rgba(6, 182, 212, 0.5)',
-                          borderRadius: '12px',
-                          color: '#FFFFFF',
-                          backdropFilter: 'blur(10px)'
+                          backgroundColor: "rgba(15, 23, 42, 0.95)",
+                          border: "1px solid rgba(6, 182, 212, 0.5)",
+                          borderRadius: "12px",
+                          color: "#FFFFFF",
+                          backdropFilter: "blur(10px)",
                         }}
                       />
                     </PieChart>
@@ -465,15 +437,10 @@ const VisitDashboard = () => {
                   {browserData.map((entry, index) => (
                     <div key={entry.name} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div 
-                          className="w-4 h-4 rounded-full shadow-lg"
-                          style={{ backgroundColor: entry.color }}
-                        />
+                        <div className="w-4 h-4 rounded-full shadow-lg" style={{ backgroundColor: entry.color }} />
                         <span className="text-white font-medium">{entry.name}</span>
                       </div>
-                      <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                        {entry.value}
-                      </Badge>
+                      <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">{entry.value}</Badge>
                     </div>
                   ))}
                 </div>
@@ -492,9 +459,9 @@ const VisitDashboard = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4 max-h-[500px] overflow-y-auto custom-scrollbar">
+              <div className="space-y-4 max-h-[500px] overflow-y-auto">
                 {recentVisits.map((visit, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-center justify-between bg-white/5 rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10"
                   >
@@ -517,9 +484,7 @@ const VisitDashboard = () => {
                     </div>
                     <div className="text-right">
                       <div className="text-white font-medium mb-1">{formatTimestamp(visit.timestamp)}</div>
-                      <div className="text-sm text-gray-400 bg-white/5 px-3 py-1 rounded-full">
-                        {visit.path}
-                      </div>
+                      <div className="text-sm text-gray-400 bg-white/5 px-3 py-1 rounded-full">{visit.path}</div>
                     </div>
                   </div>
                 ))}
