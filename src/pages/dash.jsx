@@ -37,6 +37,73 @@ const VisitDashboard = () => {
   const [error, setError] = useState(null)
   const BASE_URL = "https://visitcounter-estinsrc.onrender.com"
 
+  // Country flag emojis mapping
+  const countryFlags = {
+    "United States": "🇺🇸",
+    USA: "🇺🇸",
+    Canada: "🇨🇦",
+    "United Kingdom": "🇬🇧",
+    UK: "🇬🇧",
+    Germany: "🇩🇪",
+    France: "🇫🇷",
+    Italy: "🇮🇹",
+    Spain: "🇪🇸",
+    Netherlands: "🇳🇱",
+    Belgium: "🇧🇪",
+    Switzerland: "🇨🇭",
+    Austria: "🇦🇹",
+    Sweden: "🇸🇪",
+    Norway: "🇳🇴",
+    Denmark: "🇩🇰",
+    Finland: "🇫🇮",
+    Poland: "🇵🇱",
+    "Czech Republic": "🇨🇿",
+    Hungary: "🇭🇺",
+    Romania: "🇷🇴",
+    Bulgaria: "🇧🇬",
+    Greece: "🇬🇷",
+    Portugal: "🇵🇹",
+    Ireland: "🇮🇪",
+    Russia: "🇷🇺",
+    Ukraine: "🇺🇦",
+    Turkey: "🇹🇷",
+    Israel: "🇮🇱",
+    "Saudi Arabia": "🇸🇦",
+    UAE: "🇦🇪",
+    India: "🇮🇳",
+    China: "🇨🇳",
+    Japan: "🇯🇵",
+    "South Korea": "🇰🇷",
+    Singapore: "🇸🇬",
+    Malaysia: "🇲🇾",
+    Thailand: "🇹🇭",
+    Vietnam: "🇻🇳",
+    Philippines: "🇵🇭",
+    Indonesia: "🇮🇩",
+    Australia: "🇦🇺",
+    "New Zealand": "🇳🇿",
+    Brazil: "🇧🇷",
+    Argentina: "🇦🇷",
+    Chile: "🇨🇱",
+    Colombia: "🇨🇴",
+    Mexico: "🇲🇽",
+    Peru: "🇵🇪",
+    Venezuela: "🇻🇪",
+    "South Africa": "🇿🇦",
+    Egypt: "🇪🇬",
+    Nigeria: "🇳🇬",
+    Kenya: "🇰🇪",
+    Morocco: "🇲🇦",
+    Algeria: "🇩🇿",
+    Tunisia: "🇹🇳",
+    Ethiopia: "🇪🇹",
+    Ghana: "🇬🇭",
+  }
+
+  const getCountryFlag = (country) => {
+    return countryFlags[country] || "🌍"
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -139,22 +206,22 @@ const VisitDashboard = () => {
   const today = new Date().toISOString().split("T")[0]
   const todayVisits = dashboardData?.dailyVisits?.[today] || 0
 
-  const countryColors = ["#00D9FF", "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4"]
-  const browserColors = ["#FF9F43", "#5F27CD", "#00D2D3", "#FF3838", "#2ED573"]
+  const countryColors = ["#10B981", "#3B82F6", "#F59E0B", "#EF4444", "#8B5CF6"]
+  const browserColors = ["#06B6D4", "#F97316", "#84CC16", "#EC4899", "#6366F1"]
 
   const countryData = getPieData(dashboardData?.countryStats, countryColors)
   const browserData = getPieData(dashboardData?.browserStats, browserColors)
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex justify-center items-center">
+      <div className="min-h-screen bg-[#09090B] text-[#FAFAFA] flex justify-center items-center">
         <div className="text-center">
           <div className="relative">
             <div className="w-20 h-20 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-6"></div>
             <Activity className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-blue-400 size-8" />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">Loading Analytics</h2>
-          <p className="text-gray-300">Fetching your dashboard data...</p>
+          <h2 className="text-2xl font-bold text-[#FAFAFA] mb-2">Loading Analytics</h2>
+          <p className="text-gray-400">Fetching your dashboard data...</p>
         </div>
       </div>
     )
@@ -162,38 +229,31 @@ const VisitDashboard = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex justify-center items-center">
-        <Alert className="max-w-md bg-red-900/50 border-red-500 text-white">
-          <AlertDescription className="text-white">Failed to load analytics data: {error}</AlertDescription>
+      <div className="min-h-screen bg-[#09090B] text-[#FAFAFA] flex justify-center items-center">
+        <Alert className="max-w-md bg-red-900/50 border-red-500 text-[#FAFAFA]">
+          <AlertDescription className="text-[#FAFAFA]">Failed to load analytics data: {error}</AlertDescription>
         </Alert>
       </div>
     )
   }
 
-  const backgroundPattern = {
-    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%239C92AC' fillOpacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-    opacity: 0.2,
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-      <div className="absolute inset-0" style={backgroundPattern}></div>
-
-      <div className="relative z-10 p-6 space-y-8">
+    <div className="min-h-screen bg-[#09090B] text-[#FAFAFA]">
+      <div className="p-6 space-y-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl">
-                <BarChart3 className="size-8 text-white" />
+                <BarChart3 className="size-8 text-[#FAFAFA]" />
               </div>
-              <h1 className="text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+              <h1 className="text-6xl font-black bg-gradient-to-r from-[#FAFAFA] via-blue-400 to-purple-400 bg-clip-text text-transparent">
                 ESTINSRC
               </h1>
             </div>
-            <p className="text-xl text-gray-300 mb-4">Real-time Website Analytics Dashboard</p>
+            <p className="text-xl text-gray-400 mb-4">Real-time Website Analytics Dashboard</p>
             {dashboardData?.lastVisit && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gray-200">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#171717] backdrop-blur-sm rounded-full text-sm text-gray-300 border border-gray-800">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 Last visit: {formatTimestamp(dashboardData.lastVisit.timestamp)} from {dashboardData.lastVisit.country}
               </div>
@@ -202,24 +262,24 @@ const VisitDashboard = () => {
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-            <Card className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm border-blue-500/30 text-white shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-gray-200">Total Visits</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Total Visits</CardTitle>
                 <div className="p-2 bg-blue-500/20 rounded-lg">
                   <Eye className="h-5 w-5 text-blue-400" />
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="text-4xl font-bold text-white mb-1">
+                <div className="text-4xl font-bold text-blue-400 mb-1">
                   {(dashboardData?.totalVisits || 0).toLocaleString()}
                 </div>
-                <p className="text-xs text-gray-300">All time visitors</p>
+                <p className="text-xs text-gray-500">All time visitors</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-green-600/20 to-green-800/20 backdrop-blur-sm border-green-500/30 text-white shadow-2xl hover:shadow-green-500/25 transition-all duration-300">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-gray-200">Today's Visits</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Today's Visits</CardTitle>
                 <div className="p-2 bg-green-500/20 rounded-lg">
                   {trend.direction === "up" ? (
                     <ChevronUp className="h-5 w-5 text-green-400" />
@@ -229,42 +289,42 @@ const VisitDashboard = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="text-4xl font-bold text-white mb-1">{todayVisits.toLocaleString()}</div>
-                <p className={`text-xs ${trend.direction === "up" ? "text-green-300" : "text-red-300"}`}>
+                <div className="text-4xl font-bold text-green-400 mb-1">{todayVisits.toLocaleString()}</div>
+                <p className={`text-xs ${trend.direction === "up" ? "text-green-400" : "text-red-400"}`}>
                   {trend.percentage}% {trend.direction} from yesterday
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm border-purple-500/30 text-white shadow-2xl hover:shadow-purple-500/25 transition-all duration-300">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-gray-200">Countries</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Countries</CardTitle>
                 <div className="p-2 bg-purple-500/20 rounded-lg">
                   <Globe className="h-5 w-5 text-purple-400" />
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="text-4xl font-bold text-white mb-1">
+                <div className="text-4xl font-bold text-purple-400 mb-1">
                   {dashboardData?.countryStats ? Object.keys(dashboardData.countryStats).length : 0}
                 </div>
-                <p className="text-xs text-gray-300">Unique countries</p>
+                <p className="text-xs text-gray-500">Unique countries</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-orange-600/20 to-orange-800/20 backdrop-blur-sm border-orange-500/30 text-white shadow-2xl hover:shadow-orange-500/25 transition-all duration-300">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-gray-200">Peak Hour</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Peak Hour</CardTitle>
                 <div className="p-2 bg-orange-500/20 rounded-lg">
                   <Clock className="h-5 w-5 text-orange-400" />
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="text-4xl font-bold text-white mb-1">
+                <div className="text-4xl font-bold text-orange-400 mb-1">
                   {hourlyData.length
                     ? hourlyData.reduce((max, curr) => (curr.visits > max.visits ? curr : max)).hour
                     : "--"}
                 </div>
-                <p className="text-xs text-gray-300">Most active time today</p>
+                <p className="text-xs text-gray-500">Most active time today</p>
               </CardContent>
             </Card>
           </div>
@@ -272,9 +332,9 @@ const VisitDashboard = () => {
           {/* Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
             {/* Visits Trend */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white shadow-2xl">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-white">
+                <CardTitle className="flex items-center gap-3 text-[#FAFAFA]">
                   <div className="p-2 bg-blue-500/20 rounded-lg">
                     <TrendingUp className="h-5 w-5 text-blue-400" />
                   </div>
@@ -284,24 +344,25 @@ const VisitDashboard = () => {
               <CardContent className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={chartData}>
-                    <XAxis dataKey="date" stroke="#E5E7EB" fontSize={12} tickLine={false} axisLine={false} />
-                    <YAxis stroke="#E5E7EB" fontSize={12} tickLine={false} axisLine={false} />
+                    <XAxis dataKey="date" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                    <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "rgba(15, 23, 42, 0.95)",
-                        border: "1px solid rgba(59, 130, 246, 0.5)",
-                        borderRadius: "12px",
-                        color: "#FFFFFF",
-                        backdropFilter: "blur(10px)",
+                        backgroundColor: "#171717",
+                        border: "1px solid #333",
+                        borderRadius: "8px",
+                        color: "#FAFAFA",
                       }}
                     />
                     <Line
                       type="monotone"
                       dataKey="visits"
-                      stroke="#3B82F6"
-                      strokeWidth={4}
-                      dot={{ fill: "#3B82F6", strokeWidth: 2, r: 6 }}
-                      activeDot={{ r: 8, fill: "#60A5FA" }}
+                      stroke="#10B981"
+                      strokeWidth={3}
+                      activeDot={{
+                        r: 6,
+                        style: { fill: "#10B981", opacity: 0.8 },
+                      }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -309,9 +370,9 @@ const VisitDashboard = () => {
             </Card>
 
             {/* Hourly Activity */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white shadow-2xl">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-white">
+                <CardTitle className="flex items-center gap-3 text-[#FAFAFA]">
                   <div className="p-2 bg-orange-500/20 rounded-lg">
                     <Clock className="h-5 w-5 text-orange-400" />
                   </div>
@@ -321,18 +382,17 @@ const VisitDashboard = () => {
               <CardContent className="h-[350px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={hourlyData}>
-                    <XAxis dataKey="hour" stroke="#E5E7EB" fontSize={10} tickLine={false} axisLine={false} />
-                    <YAxis stroke="#E5E7EB" fontSize={12} tickLine={false} axisLine={false} />
+                    <XAxis dataKey="hour" stroke="#888888" fontSize={10} tickLine={false} axisLine={false} />
+                    <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "rgba(15, 23, 42, 0.95)",
-                        border: "1px solid rgba(249, 115, 22, 0.5)",
-                        borderRadius: "12px",
-                        color: "#FFFFFF",
-                        backdropFilter: "blur(10px)",
+                        backgroundColor: "#171717",
+                        border: "1px solid #333",
+                        borderRadius: "8px",
+                        color: "#FAFAFA",
                       }}
                     />
-                    <Bar dataKey="visits" fill="#F97316" radius={[6, 6, 0, 0]} />
+                    <Bar dataKey="visits" fill="#F59E0B" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -342,9 +402,9 @@ const VisitDashboard = () => {
           {/* Demographics Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
             {/* Country Distribution */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white shadow-2xl">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-white">
+                <CardTitle className="flex items-center gap-3 text-[#FAFAFA]">
                   <div className="p-2 bg-purple-500/20 rounded-lg">
                     <Globe className="h-5 w-5 text-purple-400" />
                   </div>
@@ -359,9 +419,9 @@ const VisitDashboard = () => {
                         data={countryData}
                         cx="50%"
                         cy="50%"
-                        innerRadius={70}
-                        outerRadius={120}
-                        paddingAngle={3}
+                        innerRadius={60}
+                        outerRadius={100}
+                        paddingAngle={5}
                         dataKey="value"
                       >
                         {countryData.map((entry, index) => (
@@ -370,11 +430,10 @@ const VisitDashboard = () => {
                       </Pie>
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: "rgba(15, 23, 42, 0.95)",
-                          border: "1px solid rgba(147, 51, 234, 0.5)",
-                          borderRadius: "12px",
-                          color: "#FFFFFF",
-                          backdropFilter: "blur(10px)",
+                          backgroundColor: "#171717",
+                          border: "1px solid #333",
+                          borderRadius: "8px",
+                          color: "#FAFAFA",
                         }}
                       />
                     </PieChart>
@@ -382,12 +441,12 @@ const VisitDashboard = () => {
                 </div>
                 <div className="mt-6 space-y-3">
                   {countryData.map((entry, index) => (
-                    <div key={entry.name} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                    <div key={entry.name} className="flex items-center justify-between p-3 bg-[#262626] rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div className="w-4 h-4 rounded-full shadow-lg" style={{ backgroundColor: entry.color }} />
-                        <span className="text-white font-medium">{entry.name}</span>
+                        <span className="text-2xl">{getCountryFlag(entry.name)}</span>
+                        <span className="text-[#FAFAFA] font-medium">{entry.name}</span>
                       </div>
-                      <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">{entry.value}</Badge>
+                      <Badge className="bg-[#333] text-[#FAFAFA] border-gray-600 hover:bg-[#444]">{entry.value}</Badge>
                     </div>
                   ))}
                 </div>
@@ -395,9 +454,9 @@ const VisitDashboard = () => {
             </Card>
 
             {/* Browser Distribution */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white shadow-2xl">
+            <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-white">
+                <CardTitle className="flex items-center gap-3 text-[#FAFAFA]">
                   <div className="p-2 bg-cyan-500/20 rounded-lg">
                     <Monitor className="h-5 w-5 text-cyan-400" />
                   </div>
@@ -412,9 +471,9 @@ const VisitDashboard = () => {
                         data={browserData}
                         cx="50%"
                         cy="50%"
-                        innerRadius={70}
-                        outerRadius={120}
-                        paddingAngle={3}
+                        innerRadius={60}
+                        outerRadius={100}
+                        paddingAngle={5}
                         dataKey="value"
                       >
                         {browserData.map((entry, index) => (
@@ -423,11 +482,10 @@ const VisitDashboard = () => {
                       </Pie>
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: "rgba(15, 23, 42, 0.95)",
-                          border: "1px solid rgba(6, 182, 212, 0.5)",
-                          borderRadius: "12px",
-                          color: "#FFFFFF",
-                          backdropFilter: "blur(10px)",
+                          backgroundColor: "#171717",
+                          border: "1px solid #333",
+                          borderRadius: "8px",
+                          color: "#FAFAFA",
                         }}
                       />
                     </PieChart>
@@ -435,12 +493,12 @@ const VisitDashboard = () => {
                 </div>
                 <div className="mt-6 space-y-3">
                   {browserData.map((entry, index) => (
-                    <div key={entry.name} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                    <div key={entry.name} className="flex items-center justify-between p-3 bg-[#262626] rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-4 h-4 rounded-full shadow-lg" style={{ backgroundColor: entry.color }} />
-                        <span className="text-white font-medium">{entry.name}</span>
+                        <span className="text-[#FAFAFA] font-medium">{entry.name}</span>
                       </div>
-                      <Badge className="bg-white/10 text-white border-white/20 hover:bg-white/20">{entry.value}</Badge>
+                      <Badge className="bg-[#333] text-[#FAFAFA] border-gray-600 hover:bg-[#444]">{entry.value}</Badge>
                     </div>
                   ))}
                 </div>
@@ -449,9 +507,9 @@ const VisitDashboard = () => {
           </div>
 
           {/* Recent Visits */}
-          <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white shadow-2xl">
+          <Card className="bg-gradient-to-br from-[#171717] to-[#1a1a1a] border-none text-[#FAFAFA] shadow-2xl">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
+              <CardTitle className="flex items-center gap-3 text-[#FAFAFA]">
                 <div className="p-2 bg-green-500/20 rounded-lg">
                   <Users className="h-5 w-5 text-green-400" />
                 </div>
@@ -463,19 +521,19 @@ const VisitDashboard = () => {
                 {recentVisits.map((visit, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between bg-white/5 rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10"
+                    className="flex items-center justify-between bg-[#262626] rounded-xl p-5 hover:bg-[#2c2c2c] transition-colors border border-gray-800"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        {visit.country.charAt(0)}
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                        {getCountryFlag(visit.country)}
                       </div>
                       <div>
                         <div className="flex items-center gap-3 mb-1">
-                          <span className="font-semibold text-white text-lg">{visit.country}</span>
-                          <span className="text-gray-300">•</span>
-                          <span className="text-gray-300">{visit.city}</span>
+                          <span className="font-semibold text-[#FAFAFA] text-lg">{visit.country}</span>
+                          <span className="text-gray-400">•</span>
+                          <span className="text-gray-400">{visit.city}</span>
                         </div>
-                        <div className="flex items-center gap-3 text-sm text-gray-400">
+                        <div className="flex items-center gap-3 text-sm text-gray-500">
                           <span>{visit.browser}</span>
                           <span>•</span>
                           <span>{visit.os}</span>
@@ -483,8 +541,8 @@ const VisitDashboard = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-white font-medium mb-1">{formatTimestamp(visit.timestamp)}</div>
-                      <div className="text-sm text-gray-400 bg-white/5 px-3 py-1 rounded-full">{visit.path}</div>
+                      <div className="text-[#FAFAFA] font-medium mb-1">{formatTimestamp(visit.timestamp)}</div>
+                      <div className="text-sm text-gray-400 bg-[#333] px-3 py-1 rounded-full">{visit.path}</div>
                     </div>
                   </div>
                 ))}
