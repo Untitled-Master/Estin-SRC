@@ -8,7 +8,6 @@ function Home() {
   return (
     <>
       <Navbar />
-      <h1>v1nt0r14{3nd_0f_w4v3_un0}</h1>
       <Hero />
       <CoursesGrid />
       <hr />
