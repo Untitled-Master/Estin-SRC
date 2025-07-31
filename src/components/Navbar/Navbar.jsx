@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo or brand name can go here */}
           <div className="font-bold text-xl">
-            <a href="/">ESTIN SRC x v1nt0r14{`3nd_0f_w4v3_un0`}</a>
+            <a href="/">ESTIN SRC x v1nt0r14&#123;3nd_0f_w4v3_un0&#125;</a>
           </div>
 
           {/* Desktop navigation - hidden on mobile */}
