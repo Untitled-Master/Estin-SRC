@@ -23,7 +23,7 @@ const CoursesGrid = () => {
     },
     {
       id: 3,
-      title: "ASDD",
+      title: "ASDS",
       description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
       institution: 3,
       resources: 13,

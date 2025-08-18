@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, FileText, Calendar, Users, ArrowRight, Code2, MapPin, Book, FileDigit } from 'lucide-react';
+import { BookOpen, FileText, Calendar, Users, Code2, MapPin, Book, FileDigit, Clapperboard } from 'lucide-react';
 import Navbar from '../components/Navbar/Navbar';
 import { useParams } from 'react-router-dom';
 
@@ -7,9 +7,8 @@ const CoursePage = () => {
   const { id } = useParams();
   const [courseData, setCourseData] = useState({
     course: { name: '', description: '', imageUrl: '', stats: { totalResources: 0, institutions: 0, categories: 0 } },
-    TD: [],
-    Interrogation: [],
-    Exams: [],
+    Drives: [],
+    Youtube: [],
     Resumes: [],
     Books: []
   });
@@ -40,7 +39,7 @@ const CoursePage = () => {
     );
   }
 
-  const { course, TD, Interrogation, Exams, Resumes, Books } = courseData;
+  const { course, Drives, Youtube, Resumes, Books } = courseData;
 
   return (
     <>
@@ -90,14 +89,14 @@ const CoursePage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Resources Section */}
             <div className="lg:col-span-2 space-y-8">
-              {/* TDs Section */}
+              {/* Drives Section */}
               <div className="bg-zinc-900/50 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-zinc-800">
                 <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
                   <FileText className="w-5 h-5" />
-                  TDs
+                  Drives
                 </h2>
                 <div className="space-y-4">
-                  {TD.map((item, index) => (
+                  {Drives.map((item, index) => (
                     <a
                       key={index}
                       href={item.link}
@@ -115,39 +114,14 @@ const CoursePage = () => {
                 </div>
               </div>
 
-              {/* Interrogations Section */}
+              {/* Youtube Section */}
               <div className="bg-zinc-900/50 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-zinc-800">
                 <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                  <FileText className="w-5 h-5" />
-                  Interrogations
+                  <Clapperboard className="w-5 h-5" />
+                  Youtube
                 </h2>
                 <div className="space-y-4">
-                  {Interrogation.map((item, index) => (
-                    <a
-                      key={index}
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex items-center justify-between p-4 bg-zinc-800/50 rounded-xl hover:bg-zinc-800 transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <FileText className="w-5 h-5 text-zinc-400" />
-                        <span className="text-white">{item.institution}</span>
-                      </div>
-                      <span className="text-zinc-500">→</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Exams Section */}
-              <div className="bg-zinc-900/50 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-zinc-800">
-                <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                  <FileText className="w-5 h-5" />
-                  Exams
-                </h2>
-                <div className="space-y-4">
-                  {Exams.map((item, index) => (
+                  {Youtube.map((item, index) => (
                     <a
                       key={index}
                       href={item.link}
@@ -251,10 +225,10 @@ const CoursePage = () => {
                       <Code2 className="w-5 h-5 text-zinc-400" />
                       <div>
                         <h3 className="text-sm font-medium text-white">Categories</h3>
-                        <p className="text-xs text-zinc-400">{course.stats.categories} categories</p>
+                        <p className="text-xs text-zinc-400">4 categories</p>
                       </div>
                     </div>
-                    <span className="text-white">{course.stats.categories}</span>
+                    <span className="text-white">4</span>
                   </div>
                 </div>
               </div>

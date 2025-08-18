@@ -13,7 +13,6 @@ import BookSubmissionForm from './pages/bookSubmit'
 import QCMPage from './pages/qcm'
 import HomePage from "./pages/Qcm/HomePage"
 import QuizPage from "./pages/Qcm/QuizPage"
-import Layout from "./components/Layout"
 
 function App() {
   return (
@@ -33,7 +32,6 @@ function App() {
         <Route path="/qcm" element={<QCMPage />} />
         <Route path="/quiz/:idd" element={<HomePage />} />
         <Route path="/quiz/:idd/:id" element={<QuizPage />} />
-
 
       </Routes>
     </Router>

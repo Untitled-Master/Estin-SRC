@@ -1,33 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Construction, Clock, Send } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Construction, Clock } from 'lucide-react';
 
 const UnderConstruction = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail('');
-    }
-  };
 
   return (
     <div className="relative h-screen overflow-hidden bg-[#09090B] flex items-center justify-center">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {[1, 2, 3, 4].map((item) => (
-          <div 
+          <div
             key={item}
             className={`absolute bg-[#FAFAFA]/5 rounded-full blur-2xl transform transition-all duration-1000 animate-pulse ${
-              isLoaded 
-                ? 'opacity-100 scale-100' 
+              isLoaded
+                ? 'opacity-100 scale-100'
                 : 'opacity-0 scale-50'
             }`}
             style={{
@@ -44,10 +35,10 @@ const UnderConstruction = () => {
       {/* Content Container */}
       <div className="relative z-10 max-w-2xl mx-auto px-4 text-center">
         {/* ESTIN Branding */}
-        <div 
+        <div
           className={`mb-8 opacity-0 transform transition-all duration-700 ${
-            isLoaded 
-              ? 'translate-y-0 opacity-100' 
+            isLoaded
+              ? 'translate-y-0 opacity-100'
               : 'translate-y-4'
           }`}
         >
@@ -61,24 +52,24 @@ const UnderConstruction = () => {
         </div>
 
         {/* Construction Illustration */}
-        <div 
+        <div
           className={`mb-8 flex justify-center items-center opacity-0 transform transition-all duration-1000 delay-200 ${
-            isLoaded 
-              ? 'translate-y-0 opacity-100' 
+            isLoaded
+              ? 'translate-y-0 opacity-100'
               : 'translate-y-6'
           }`}
         >
-          <Construction 
-            className="w-24 h-24 text-[#FAFAFA]/30 animate-bounce" 
-            strokeWidth={1} 
+          <Construction
+            className="w-24 h-24 text-[#FAFAFA]/30 animate-bounce"
+            strokeWidth={1}
           />
         </div>
 
         {/* Main Content */}
-        <div 
+        <div
           className={`mb-10 opacity-0 transform transition-all duration-1000 delay-300 ${
-            isLoaded 
-              ? 'translate-y-0 opacity-100' 
+            isLoaded
+              ? 'translate-y-0 opacity-100'
               : 'translate-y-6'
           }`}
         >
@@ -86,7 +77,7 @@ const UnderConstruction = () => {
             Website Under Construction
           </h1>
           <p className="text-lg md:text-xl text-[#FAFAFA]/80 max-w-xl mx-auto mb-6">
-            We're working hard to bring you an exceptional digital experience. 
+            We're working hard to bring you an exceptional digital experience.
             Stay tuned for something amazing!
           </p>
 

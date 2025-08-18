@@ -44,11 +44,11 @@ const Navbar = () => {
               <BellDot size={20} />
             </button>
             <button onClick={() => navigate('/account')} className="hover:text-gray-300 transition-colors">
-              <User size={20} /> 
+              <User size={20} />
             </button>
             {/* Hamburger menu button - visible only on mobile */}
-            <button 
-              className="md:hidden text-zinc-50 hover:text-gray-300 focus:outline-none" 
+            <button
+              className="md:hidden text-zinc-50 hover:text-gray-300 focus:outline-none"
               onClick={toggleMenu}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -60,29 +60,29 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-2 border-t border-zinc-800">
             <div className="flex flex-col space-y-4">
-              <a 
-                href="/" 
+              <a
+                href="/"
                 className="hover:text-gray-300 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </a>
-              <a 
-                href="/courses" 
+              <a
+                href="/courses"
                 className="hover:text-gray-300 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Courses
               </a>
-              <a 
-                href="/qcm" 
+              <a
+                href="/qcm"
                 className="hover:text-gray-300 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Qcms
               </a>
-              <a 
-                href="/books" 
+              <a
+                href="/books"
                 className="hover:text-gray-300 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
