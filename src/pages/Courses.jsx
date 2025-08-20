@@ -97,13 +97,31 @@ const CoursesGrid = () => {
       imageUrl: "https://i.pinimg.com/736x/c1/11/51/c11151bd3df847968bd8bbc1a931a159.jpg"
     },
     {
-      "id": "11",
-      "title": "MECA - Mechanics of the Point",
-      "description": "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
-      "institution": 16,
-      "resources": 9,
-      "level": "1cp",
-      "imageUrl": "https://i.pinimg.com/736x/f1/43/5b/f1435b742f7a6bf03cabf843cee61c00.jpg"
+      id: 11,
+      title: "MECA - Mechanics of the Point",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 16,
+      resources: 9,
+      level: "1cp",
+      imageUrl: "https://i.pinimg.com/736x/f1/43/5b/f1435b742f7a6bf03cabf843cee61c00.jpg"
+    },
+    {
+      id: 12,
+      title: "Algebra 3",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 16,
+      resources: 9,
+      level: "2cp",
+      imageUrl: "https://i.pinimg.com/1200x/f8/c1/05/f8c105dbe2c67420516a08b1972fa764.jpg"
+    },
+    {
+      id: 13,
+      title: "Analysis 3",
+      description: "Your comprehensive archive of educational resources, providing access to a curated collection of TDs, examinations, and academic materials from leading institutions.",
+      institution: 16,
+      resources: 9,
+      level: "2cp",
+      imageUrl: "https://i.pinimg.com/736x/78/b6/17/78b617cd90911565d27acd4fd47b7495.jpg"
     }
   ];
 
@@ -190,3 +208,4 @@ const CoursesGrid = () => {
 };
 
 export default CoursesGrid;
+
